@@ -24,7 +24,7 @@ int str_to_bool(char * string){
 }
 
 
-int main(int argc, char ** argv){
+void compat (long ** compat_table, int compat_table_size){
     char user[32];
     char pword[32];
 
@@ -67,8 +67,8 @@ int main(int argc, char ** argv){
     int total;
 
     int values[numrows];
-    int compat_table_size =(numrows*(numrows-1))/2 ;
-    long compat_table[compat_table_size][3];
+    //int compat_table_size =(numrows*(numrows-1))/2 ;
+    //long compat_table[compat_table_size][3];
 
     for(i = 0; i < numrows; i++){
         rows[i] = mysql_fetch_row(results);
@@ -114,5 +114,9 @@ int main(int argc, char ** argv){
         printf("----------+----------+------\n");
     }
     printf("Done!\n");
-    return compat_table;
+//    return *compat_table;
+}
+
+void main (){
+    printf("Hello world\n");
 }
