@@ -16,6 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.my.roommate.match.myroommatematch.app.Second_Profile"
+            android:label="Second Profile">
+        </activity>
     </application>
 
 </manifest>

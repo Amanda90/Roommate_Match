@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
+import android.content.Intent;
+import android.content.Context;
 
 import javax.net.ssl.SSLContext;
 
@@ -71,6 +73,8 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void addListenerOnButton() {
+        final Context context = this;
+
         System.out.println("in listener");
         final Student myStudent = new Student();
         genderGrp = (RadioGroup) findViewById(R.id.genderGrp);
@@ -309,6 +313,10 @@ public class MainActivity extends ActionBarActivity {
                     }
                 };
                 myclient.start();
+
+                //Switch to second Profile
+                Intent intent = new Intent (context, Second_Profile.class);
+                startActivity(intent);
 
             }
         });
