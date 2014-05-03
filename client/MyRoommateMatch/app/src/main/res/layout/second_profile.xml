@@ -1,0 +1,507 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        tools:context="com.my.roommate.match.myroommatematch.app.MainActivity">
+
+        <TextView
+            android:text="@string/email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/email_lab"
+            android:layout_alignBottom="@+id/email"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:id="@+id/email"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/email_lab"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/first_lab"
+            android:text="@string/first"
+            android:layout_marginTop="21dp"
+            android:layout_below="@+id/email"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/first"
+            android:layout_above="@+id/last_lab"
+            android:layout_alignRight="@+id/last"
+            android:layout_alignEnd="@+id/last"
+            android:layout_toRightOf="@+id/first_lab" />
+        <TextView
+            android:text="@string/last"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/last_lab"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/first_lab" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/last"
+            android:layout_below="@+id/first_lab"
+            android:layout_toRightOf="@+id/last_lab"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gender"
+            android:id="@+id/gender_lab"
+            android:layout_below="@+id/last_lab"
+            android:layout_marginTop="10dp"/>
+        <!--Gender-->
+        <RadioGroup
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginRight="170dp"
+            android:layout_below="@+id/gender_lab"
+            android:orientation="horizontal"
+            android:id="@+id/genderGrp"
+            android:layout_marginBottom="300dp">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/male"
+                android:id="@+id/male"
+                android:checked="false" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/female"
+                android:id="@+id/female"
+                android:checked="false" />
+        </RadioGroup>
+
+        <TextView
+            android:text="@string/year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/year_lab"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/gender_lab" />
+        <!--What year are you?-->
+        <RadioGroup
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/yearGrp"
+            android:layout_below="@+id/year_lab"
+            android:orientation="vertical"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/freshman"
+                android:id="@+id/freshman"
+                android:checked="false" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sophomore"
+                android:id="@+id/sophomore"
+                android:checked="false"
+                android:layout_marginLeft="0dp" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/junior"
+                android:id="@+id/junior"
+                android:checked="false" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/senior"
+                android:id="@+id/senior"
+                android:checked="false"/>
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/spr_senior"
+                android:id="@+id/supr"
+                android:checked="false" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/grad_student"
+                android:id="@+id/grad"
+                android:checked="false" />
+
+        </RadioGroup>
+
+        <TextView
+            android:text="@string/smoking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/smoking_lab"
+            android:layout_below="@+id/yearGrp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <!--Do you smoke?-->
+        <RadioGroup
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            android:id="@+id/smokeGrp"
+            android:layout_alignTop="@+id/smoking_lab"
+            android:layout_below="@+id/smoking_lab"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="21dp"
+            android:layout_marginRight="200dp">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/smoke_y"
+                android:id="@+id/smoke_y"
+                android:checked="false" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/smoke_n"
+                android:id="@+id/smoke_n"
+                android:checked="false" />
+        </RadioGroup>
+
+        <TextView
+            android:text="@string/greek"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/greek_lab"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/smokeGrp" />
+
+    <!--Are you going Greek?-->
+        <RadioGroup
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            android:id="@+id/greekGrp"
+            android:layout_alignTop="@+id/greek_lab"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="21dp"
+            android:layout_marginRight="200dp">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/greek_y"
+                android:id="@+id/greek_y"
+                android:checked="false" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/greek_n"
+                android:id="@+id/greek_n"
+                android:checked="false" />
+        </RadioGroup>
+
+    <!-- Check Box groups for Sports -->
+        <TextView
+            android:text="@string/sports"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sports_lab"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/greekGrp" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/basketball"
+            android:id="@+id/basketball"
+            android:checked="false"
+            android:layout_below="@+id/sports_lab"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/soccer"
+            android:id="@+id/soccer"
+            android:checked="false"
+            android:layout_below="@+id/basketball"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/baseball"
+            android:id="@+id/baseball"
+            android:checked="false"
+            android:layout_below="@+id/soccer"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/football"
+            android:id="@+id/football"
+            android:checked="false"
+            android:layout_below="@+id/baseball"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ultimate"
+            android:id="@+id/ultimate"
+            android:checked="false"
+            android:layout_below="@+id/football"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/swimming"
+            android:id="@+id/swimming"
+            android:checked="false"
+            android:layout_below="@+id/ultimate"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hockey"
+            android:id="@+id/hockey"
+            android:checked="false"
+            android:layout_below="@+id/swimming"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/softball"
+            android:id="@+id/softball"
+            android:checked="false"
+            android:layout_below="@+id/hockey"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tennis"
+            android:id="@+id/tennis"
+            android:checked="false"
+            android:layout_below="@+id/softball"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/other"
+            android:id="@+id/other"
+            android:checked="false"
+            android:layout_below="@+id/tennis"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <!-- End of Check Box groups for Sports -->
+        <TextView
+            android:text="@string/bed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bed_lab"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/other" />
+        <!--Bed time-->
+        <RadioGroup
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:id="@+id/bedGrp"
+            android:layout_below="@+id/bed_lab"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/early_early"
+                android:id="@+id/early_early"
+                android:checked="false"/>
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/late_late"
+                android:id="@+id/late_late"
+                android:checked="false" />
+        </RadioGroup>
+
+        <!--Have you ever shared a room before?-->
+        <TextView
+            android:text="@string/share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/share_lab"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/bedGrp" />
+        <RadioGroup
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            android:id="@+id/shareGrp"
+            android:layout_below="@+id/share_lab">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/share_y"
+                android:id="@+id/share_y"
+                android:checked="false" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/share_n"
+                android:id="@+id/share_n"
+                android:checked="false" />
+        </RadioGroup>
+
+        <!--How often you party-->
+        <TextView
+            android:text="@string/party"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/party_lab"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/shareGrp" />
+        <RadioGroup
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            android:id="@+id/partyGrp"
+            android:layout_below="@+id/party_lab">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/party_y"
+                android:id="@+id/party_y"
+                android:checked="false" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/party_n"
+                android:id="@+id/party_n"
+                android:checked="false" />
+        </RadioGroup>
+
+        <!--Religion-->
+        <TextView
+            android:text="@string/religion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/religion_lab"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/partyGrp" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:ems="10"
+            android:id="@+id/religion"
+            android:layout_below="@+id/partyGrp"
+            android:layout_toRightOf="@+id/religion_lab"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+
+        <!--Do you snore?-->
+        <TextView
+            android:text="@string/snore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/snore_lab"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/religion" />
+        <RadioGroup
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            android:id="@+id/snoreGrp"
+            android:layout_below="@+id/snore_lab">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/snore_y"
+                android:id="@+id/snore_y"
+                android:checked="false" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/snore_n"
+                android:id="@+id/snore_n"
+                android:checked="false" />
+        </RadioGroup>
+
+        <!--Importance of grades-->
+        <TextView
+            android:text="@string/grades"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/grades_lab"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/snoreGrp" />
+        <TextView
+            android:text="@string/grades_very"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/grades_very"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/grades_lab" />
+        <TextView
+            android:text="@string/grades_notvery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/grades_notvery"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/grades_lab"/>
+
+        <SeekBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/grades"
+            android:layout_below="@+id/grades_very"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/submit"
+            android:id="@+id/submit"
+            android:layout_below="@+id/grades"
+            android:layout_alignRight="@+id/yearGrp"
+            android:layout_alignEnd="@+id/yearGrp" />
+
+    </RelativeLayout>
+</ScrollView>
