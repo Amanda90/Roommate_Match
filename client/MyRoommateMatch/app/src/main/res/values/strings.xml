@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">My Roommate Match</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="email">Email:</string>
+    <string name="first">First Name:</string>
+    <string name="last">Last Name:</string>
+    <string name="gender">Gender:</string>
+    <string name="year">Year:</string>
+    <string name="smoking">Do you smoke?</string>
+    <string name="submit">Submit Profile</string>
+
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+
+    <string name="freshman">Freshman</string>
+    <string name="sophomore">Sophomore</string>
+    <string name="junior">Junior</string>
+    <string name="senior">Senior</string>
+    <string name="spr_senior">Super Senior</string>
+    <string name="grad_student">Graduate Student</string>
+
+    <string name="smoke_y">Yes</string>
+    <string name="smoke_n">No</string>
+
+    <string name="greek">Are you or do you plan on joining Greek life?</string>
+    <string name="greek_y">Yes</string>
+    <string name="greek_n">No</string>
+
+    <string name="sports">What sports do you play?</string>
+    <string name="basketball">Basketball</string>
+    <string name="soccer">Soccer</string>
+    <string name="football">Football</string>
+    <string name="baseball">Baseball</string>
+    <string name="ultimate">Ultimate Frisbee</string>
+    <string name="swimming">Swimming</string>
+    <string name="hockey">Hockey</string>
+    <string name="softball">Softball</string>
+    <string name="tennis">Tennis</string>
+    <string name="other">Other</string>
+
+    <string name="bed">What are your personal hours?</string>
+    <string name="early_early">Early to bed, Early to rise</string>
+    <string name="early_late">Early to bed, Late to rise</string>
+    <string name="late_early">Late to bed, Early to rise</string>
+    <string name="late_late">Late to bed, Late to rise</string>
+
+    <string name="share">Have you ever shared a room before?</string>
+    <string name="share_y">Yes</string>
+    <string name="share_n">No</string>
+
+    <string name="party">Do you like to go out/party on weekends?</string>
+    <string name="party_y">Yes</string>
+    <string name="party_n">No</string>
+
+
+    <string name="party_once">Once a week</string>
+    <string name="party_twice">Twice a week</string>
+    <string name="party_monthly">Once a month</string>
+    <string name="party_everyday">Everday</string>
+    <string name="party_never">Never</string>
+
+    <string name="snore">Do you snore?</string>
+    <string name="snore_y">Yes</string>
+    <string name="snore_n">No</string>
+
+    <string name="religion">Religion, put NA if not applicable:</string>
+
+    <string name="grades">How important are grades to you?</string>
+    <string name="grades_very">Very Important</string>
+    <string name="grades_notvery">Not Very Important</string>
+
+</resources>
