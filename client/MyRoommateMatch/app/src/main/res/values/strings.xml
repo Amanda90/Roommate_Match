@@ -69,7 +69,20 @@
     <string name="religion">Religion, put NA if not applicable:</string>
 
     <string name="grades">How important are grades to you?</string>
-    <string name="grades_very">Very Important</string>
-    <string name="grades_notvery">Not Very Important</string>
+    <string name="very">Very Important</string>
+    <string name="notvery">Not Very Important</string>
+
+    <string name="roommate">What does your ideal roommate look like?</string>
+    <string name="smoke_rm">Do they smoke?</string>
+    <string name="greek_rm">Are they in greek life?</string>
+    <string name="sports_rm">Do they play sports?</string>
+    <string name="bed_rm">What are their sleeping patterns?</string>
+    <string name="share_rm">Have they shared a room before?</string>
+    <string name="party_rm">Do they like to go out or party?</string>
+    <string name="religion_rm">Religious Preference (NA if not applicable):</string>
+    <string name="snore_rm">Do they snore?</string>
+    <string name="grades_rm">Roommate importance of grades?</string>
+
+    <string name="importance">How important is this trait to you?</string>
 
 </resources>

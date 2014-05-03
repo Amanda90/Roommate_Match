@@ -5,7 +5,7 @@
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
@@ -13,160 +13,22 @@
         tools:context="com.my.roommate.match.myroommatematch.app.MainActivity">
 
         <TextView
-            android:text="@string/email"
+            android:text="@string/roommate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/email_lab"
-            android:layout_alignBottom="@+id/email"
+            android:id="@+id/roommate_lab"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            android:ems="10"
-            android:id="@+id/email"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/email_lab"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/first_lab"
-            android:text="@string/first"
-            android:layout_marginTop="21dp"
-            android:layout_below="@+id/email"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/first"
-            android:layout_above="@+id/last_lab"
-            android:layout_alignRight="@+id/last"
-            android:layout_alignEnd="@+id/last"
-            android:layout_toRightOf="@+id/first_lab" />
-        <TextView
-            android:text="@string/last"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/last_lab"
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/first_lab" />
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/last"
-            android:layout_below="@+id/first_lab"
-            android:layout_toRightOf="@+id/last_lab"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/gender"
-            android:id="@+id/gender_lab"
-            android:layout_below="@+id/last_lab"
-            android:layout_marginTop="10dp"/>
-        <!--Gender-->
-        <RadioGroup
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginRight="170dp"
-            android:layout_below="@+id/gender_lab"
-            android:orientation="horizontal"
-            android:id="@+id/genderGrp"
-            android:layout_marginBottom="300dp">
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/male"
-                android:id="@+id/male"
-                android:checked="false" />
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/female"
-                android:id="@+id/female"
-                android:checked="false" />
-        </RadioGroup>
-
-        <TextView
-            android:text="@string/year"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/year_lab"
-            android:layout_marginTop="30dp"
-            android:layout_below="@+id/gender_lab" />
-        <!--What year are you?-->
-        <RadioGroup
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/yearGrp"
-            android:layout_below="@+id/year_lab"
-            android:orientation="vertical"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true">
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/freshman"
-                android:id="@+id/freshman"
-                android:checked="false" />
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/sophomore"
-                android:id="@+id/sophomore"
-                android:checked="false"
-                android:layout_marginLeft="0dp" />
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/junior"
-                android:id="@+id/junior"
-                android:checked="false" />
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/senior"
-                android:id="@+id/senior"
-                android:checked="false"/>
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/spr_senior"
-                android:id="@+id/supr"
-                android:checked="false" />
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/grad_student"
-                android:id="@+id/grad"
-                android:checked="false" />
-
-        </RadioGroup>
-
-        <TextView
-            android:text="@string/smoking"
+            android:text="@string/smoke_rm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/smoking_lab"
-            android:layout_below="@+id/yearGrp"
+            android:layout_below="@+id/roommate_lab"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
-        <!--Do you smoke?-->
+
+        <!--Do they smoke?-->
         <RadioGroup
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -193,12 +55,46 @@
         </RadioGroup>
 
         <TextView
-            android:text="@string/greek"
+            android:text="@string/importance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/smoke_imp_lab"
+            android:layout_below="@+id/smokeGrp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <TextView
+            android:text="@string/very"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/smoke_very"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/smoke_imp_lab" />
+        <TextView
+            android:text="@string/notvery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/smoke_notvery"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/smoke_imp_lab"/>
+        <SeekBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/smoke_imp"
+            android:layout_below="@+id/smoke_notvery"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+
+        <TextView
+            android:text="@string/greek_rm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/greek_lab"
             android:layout_marginTop="10dp"
-            android:layout_below="@+id/smokeGrp" />
+            android:layout_below="@+id/smoke_imp" />
 
     <!--Are you going Greek?-->
         <RadioGroup
@@ -224,15 +120,48 @@
                 android:id="@+id/greek_n"
                 android:checked="false" />
         </RadioGroup>
+        <TextView
+            android:text="@string/importance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/greek_imp_lab"
+            android:layout_below="@+id/greekGrp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <TextView
+            android:text="@string/very"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/greek_very"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/greek_imp_lab" />
+        <TextView
+            android:text="@string/notvery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/greek_notvery"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/greek_imp_lab"/>
+        <SeekBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/greek_imp"
+            android:layout_below="@+id/greek_very"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
 
     <!-- Check Box groups for Sports -->
         <TextView
-            android:text="@string/sports"
+            android:text="@string/sports_rm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/sports_lab"
             android:layout_marginTop="10dp"
-            android:layout_below="@+id/greekGrp" />
+            android:layout_below="@+id/greek_imp" />
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -323,15 +252,47 @@
             android:layout_below="@+id/tennis"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
-
         <!-- End of Check Box groups for Sports -->
         <TextView
-            android:text="@string/bed"
+            android:text="@string/importance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sports_imp_lab"
+            android:layout_below="@+id/other"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <TextView
+            android:text="@string/very"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sports_very"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/sports_imp_lab" />
+        <TextView
+            android:text="@string/notvery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sports_notvery"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/sports_imp_lab"/>
+        <SeekBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sports_imp"
+            android:layout_below="@+id/sports_very"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:text="@string/bed_rm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/bed_lab"
             android:layout_marginTop="10dp"
-            android:layout_below="@+id/other" />
+            android:layout_below="@+id/sports_imp" />
         <!--Bed time-->
         <RadioGroup
             android:layout_width="fill_parent"
@@ -347,7 +308,6 @@
                 android:text="@string/early_early"
                 android:id="@+id/early_early"
                 android:checked="false"/>
-
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -355,15 +315,47 @@
                 android:id="@+id/late_late"
                 android:checked="false" />
         </RadioGroup>
+        <TextView
+            android:text="@string/importance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bed_imp_lab"
+            android:layout_below="@+id/bedGrp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <TextView
+            android:text="@string/very"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bed_very"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/bed_imp_lab" />
+        <TextView
+            android:text="@string/notvery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bed_notvery"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/bed_imp_lab"/>
+        <SeekBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bed_imp"
+            android:layout_below="@+id/bed_very"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <!--Have you ever shared a room before?-->
         <TextView
-            android:text="@string/share"
+            android:text="@string/share_rm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/share_lab"
             android:layout_marginTop="10dp"
-            android:layout_below="@+id/bedGrp" />
+            android:layout_below="@+id/bed_imp" />
         <RadioGroup
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -383,15 +375,48 @@
                 android:id="@+id/share_n"
                 android:checked="false" />
         </RadioGroup>
+        <TextView
+            android:text="@string/importance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/share_imp_lab"
+            android:layout_below="@+id/shareGrp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <TextView
+            android:text="@string/very"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/share_very"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/share_imp_lab" />
+        <TextView
+            android:text="@string/notvery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/share_notvery"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/share_imp_lab"/>
+
+        <SeekBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/share_imp"
+            android:layout_below="@+id/share_very"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <!--How often you party-->
         <TextView
-            android:text="@string/party"
+            android:text="@string/party_rm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/party_lab"
             android:layout_marginTop="10dp"
-            android:layout_below="@+id/shareGrp" />
+            android:layout_below="@+id/share_imp" />
         <RadioGroup
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -411,35 +436,100 @@
                 android:id="@+id/party_n"
                 android:checked="false" />
         </RadioGroup>
+        <TextView
+            android:text="@string/importance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/party_imp_lab"
+            android:layout_below="@+id/partyGrp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <TextView
+            android:text="@string/very"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/party_very"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/party_imp_lab" />
+        <TextView
+            android:text="@string/notvery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/party_notvery"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/party_imp_lab"/>
+        <SeekBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/party_imp"
+            android:layout_below="@+id/party_very"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
 
         <!--Religion-->
         <TextView
-            android:text="@string/religion"
+            android:text="@string/religion_rm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/religion_lab"
             android:layout_marginTop="10dp"
-            android:layout_below="@+id/partyGrp" />
+            android:layout_below="@+id/party_imp" />
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="text"
             android:ems="10"
             android:id="@+id/religion"
-            android:layout_below="@+id/partyGrp"
+            android:layout_below="@+id/party_imp"
             android:layout_toRightOf="@+id/religion_lab"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
+        <TextView
+            android:text="@string/importance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/religion_imp_lab"
+            android:layout_below="@+id/religion"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <TextView
+            android:text="@string/very"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/religion_very"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/religion_imp_lab" />
+        <TextView
+            android:text="@string/notvery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/religion_notvery"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/religion_imp_lab"/>
+        <SeekBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/religion_imp"
+            android:layout_below="@+id/religion_very"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
 
         <!--Do you snore?-->
         <TextView
-            android:text="@string/snore"
+            android:text="@string/snore_rm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/snore_lab"
             android:layout_marginTop="10dp"
-            android:layout_below="@+id/religion" />
+            android:layout_below="@+id/religion_imp" />
         <RadioGroup
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -459,28 +549,60 @@
                 android:id="@+id/snore_n"
                 android:checked="false" />
         </RadioGroup>
+        <TextView
+            android:text="@string/importance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/snore_imp_lab"
+            android:layout_below="@+id/snoreGrp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <TextView
+            android:text="@string/very"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/snore_very"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/snore_imp_lab" />
+        <TextView
+            android:text="@string/notvery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/snore_notvery"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/snore_imp_lab"/>
+        <SeekBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/snore_imp"
+            android:layout_below="@+id/snore_very"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <!--Importance of grades-->
         <TextView
-            android:text="@string/grades"
+            android:text="@string/grades_rm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/grades_lab"
             android:layout_marginTop="10dp"
-            android:layout_below="@+id/snoreGrp" />
+            android:layout_below="@+id/snore_imp" />
         <TextView
-            android:text="@string/grades_very"
+            android:text="@string/very"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/grades_very"
+            android:id="@+id/very"
             android:layout_marginTop="10dp"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/grades_lab" />
         <TextView
-            android:text="@string/grades_notvery"
+            android:text="@string/notvery"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/grades_notvery"
+            android:id="@+id/notvery"
             android:layout_marginTop="10dp"
             android:layout_below="@id/grades_lab"/>
 
@@ -488,7 +610,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/grades"
-            android:layout_below="@+id/grades_very"
+            android:layout_below="@+id/very"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentLeft="true"
@@ -500,8 +622,8 @@
             android:text="@string/submit"
             android:id="@+id/submit"
             android:layout_below="@+id/grades"
-            android:layout_alignRight="@+id/yearGrp"
-            android:layout_alignEnd="@+id/yearGrp" />
+            android:layout_alignRight="@+id/roommate_lab"
+            android:layout_alignEnd="@+id/roommate_lab"/>
 
     </RelativeLayout>
 </ScrollView>

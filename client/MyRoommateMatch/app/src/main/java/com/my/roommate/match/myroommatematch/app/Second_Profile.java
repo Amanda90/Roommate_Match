@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
+//import android.R;
 
 import javax.net.ssl.SSLContext;
 
@@ -25,24 +26,26 @@ import java.lang.*;
 
 
 class Second_Student{
-    public String email;
-    public String first;
-    public String last;
-    public String gender;
-    public String year;
     public Boolean smoke;
+    public int smoke_imp;
     public Boolean greek;
+    public int greek_imp;
     public Boolean shared;
+    public int share_imp;
     public Boolean snore;
+    public int snore_imp;
     public Boolean party;
+    public int party_imp;
     public Boolean bed;
+    public int bed_imp;
     public String religion;
+    public int religion_imp;
     public String[] sports = new String[10];
+    public int sports_imp;
     public int grades;
 
     public Second_Student(){
         //DO STUFF
-        this.email = null;
     }
 }
 
@@ -51,18 +54,18 @@ public class Second_Profile extends ActionBarActivity {
     byte[] mybytes;
     public int submitflg;
 
-    private RadioGroup genderGrp, yearGrp, smokeGrp, sharedGrp, snoreGrp, partyGrp, bedGrp, greekGrp;
-    private RadioButton genderBt, yearBt, smokeBt, sharedBt, snoreBt, partyBt, bedBt, greekBt;
+    private RadioGroup smokeGrp, sharedGrp, snoreGrp, partyGrp, bedGrp, greekGrp;
+    private RadioButton smokeBt, sharedBt, snoreBt, partyBt, bedBt, greekBt;
     private CheckBox chkBasketball, chkBaseball, chkSoccer,
             chkFootball, chkUltimate, chkSwimming, chkHockey,
             chkSoftBall, chkTennis, chkOther;
-    SeekBar grades;
-    EditText email, first, last, religion;
+    SeekBar grades, smoke_seek, share_seek, snore_seek, party_seek, bed_seek,
+            greek_seek, sports_seek, religion_seek;
+    EditText religion;
     Button submit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        System.out.println("HERE!!!!");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.second_profile);
 
@@ -73,8 +76,7 @@ public class Second_Profile extends ActionBarActivity {
     public void addListenerOnButton() {
         System.out.println("in listener");
         final Second_Student myStudent = new Second_Student();
-        genderGrp = (RadioGroup) findViewById(R.id.genderGrp);
-        yearGrp = (RadioGroup) findViewById(R.id.yearGrp);
+
         smokeGrp = (RadioGroup) findViewById(R.id.smokeGrp);
         sharedGrp = (RadioGroup) findViewById(R.id.shareGrp);
         snoreGrp = (RadioGroup) findViewById(R.id.snoreGrp);
@@ -83,10 +85,15 @@ public class Second_Profile extends ActionBarActivity {
         greekGrp = (RadioGroup) findViewById(R.id.greekGrp);
 
         grades = (SeekBar) findViewById(R.id.grades);
+        smoke_seek = (SeekBar) findViewById(R.id.smoke_imp);
+        snore_seek = (SeekBar) findViewById(R.id.snore_imp);
+        share_seek = (SeekBar) findViewById(R.id.share_imp);
+        bed_seek = (SeekBar) findViewById(R.id.bed_imp);
+        religion_seek = (SeekBar) findViewById(R.id.religion_imp);
+        party_seek = (SeekBar) findViewById(R.id.party_imp);
+        greek_seek = (SeekBar) findViewById(R.id.greek_imp);
+        sports_seek = (SeekBar) findViewById(R.id.sports_imp);
 
-        email = (EditText) findViewById(R.id.email);
-        last = (EditText) findViewById(R.id.last);
-        first = (EditText) findViewById(R.id.first);
         religion = (EditText) findViewById(R.id.religion);
 
         //sports
@@ -109,8 +116,6 @@ public class Second_Profile extends ActionBarActivity {
             public void onClick(View v) {
                 System.out.println("in onClick");
                 //get selected radio button from radio Group
-                int selectGender = genderGrp.getCheckedRadioButtonId();
-                int selectYear = yearGrp.getCheckedRadioButtonId();
                 int selectSmoke = smokeGrp.getCheckedRadioButtonId();
                 int selectShare = sharedGrp.getCheckedRadioButtonId();
                 int selectSnore = snoreGrp.getCheckedRadioButtonId();
@@ -119,8 +124,6 @@ public class Second_Profile extends ActionBarActivity {
                 int selectGreek = greekGrp.getCheckedRadioButtonId();
 
                 //find the radio button by the returned id
-                genderBt = (RadioButton) findViewById(selectGender);
-                yearBt = (RadioButton) findViewById(selectYear);
                 smokeBt = (RadioButton) findViewById(selectSmoke);
                 sharedBt = (RadioButton) findViewById(selectShare);
                 snoreBt = (RadioButton) findViewById(selectSnore);
@@ -232,26 +235,24 @@ public class Second_Profile extends ActionBarActivity {
                     System.out.println("Greek is not set");
                 }
 
-                myStudent.email = email.getText().toString();
-                myStudent.first = first.getText().toString();
-                myStudent.last = last.getText().toString();
-                myStudent.gender = genderBt.getText().toString();
-                myStudent.year = yearBt.getText().toString();
                 myStudent.smoke = smokeflg;
+                myStudent.smoke_imp = smoke_seek.getProgress();
                 myStudent.shared = shareflg;
+                myStudent.share_imp = share_seek.getProgress();
                 myStudent.snore = snoreflg;
+                myStudent.snore_imp = snore_seek.getProgress();
                 myStudent.party = partyflg;
+                myStudent.party_imp = party_seek.getProgress();
                 myStudent.bed = bedflg;
+                myStudent.bed_imp = bed_seek.getProgress();
                 myStudent.religion = religion.getText().toString();
+                myStudent.religion_imp = religion_seek.getProgress();
                 myStudent.grades = grades.getProgress();
                 myStudent.greek = greekflg;
+                myStudent.greek_imp = greek_seek.getProgress();
+                myStudent.sports_imp = sports_seek.getProgress();
 
 
-                System.out.println(myStudent.email);
-                System.out.println(myStudent.first);
-                System.out.println(myStudent.last);
-                System.out.println(myStudent.gender);
-                System.out.println(myStudent.year);
                 System.out.println(myStudent.smoke);
                 System.out.println(myStudent.shared);
                 System.out.println(myStudent.snore);
@@ -261,19 +262,21 @@ public class Second_Profile extends ActionBarActivity {
                 System.out.println(myStudent.grades);
 
                 String myFinalString = "{\n"+
-                "\"email\": " + myStudent.email + ";\n"+
-                "\"fname\": " + myStudent.first + ";\n"+
-                "\"lname\": " + myStudent.last + ";\n"+
-                "\"gender\": " + myStudent.gender + ";\n"+
-                "\"year\": " + myStudent.year + ";\n"+
                 "\"smoking\": " + myStudent.smoke + ";\n"+
+                "\"smoking_import\":" + myStudent.smoke_imp + ";\n"+
                 "\"pledge\": " + myStudent.greek + ";\n"+
+                "\"pledge_import\":" + myStudent.greek_imp + ";\n"+
                 "\"drink\": " + myStudent.party + ";\n"+
+                "\"drink_import\":" + myStudent.party_imp + ";\n"+
                 "\"religion\": " + myStudent.religion + ";\n"+
+                "\"religion_import\":" + myStudent.religion_imp + ";\n"+
                 "\"shared_before\": " + myStudent.shared + ";\n"+
+                "\"shared_import\":" + myStudent.share_imp + ";\n"+
                 "\"early_bird\": " + myStudent.bed + ";\n"+
+                "\"early_bird_import\":" + myStudent.bed_imp + ";\n"+
                 "\"snore\": " + myStudent.snore + ";\n"+
-                "\"importance_of_grades\": " + myStudent.grades + ";\n"+
+                "\"snore_import\":" + myStudent.snore_imp + ";\n"+
+                "\"importance_of_grades\":" + myStudent.grades + ";\n"+
                 "\"sports\"" + "(" + i + "):" + " [";
 
                 int k;
@@ -286,8 +289,8 @@ public class Second_Profile extends ActionBarActivity {
                         myFinalString = myFinalString + myStudent.sports[k];
                     }
                 }
-
                 myFinalString = myFinalString + "];\n";
+                myFinalString = myFinalString + "\"sports_import\":" + myStudent.sports_imp + ";\n";
                 myFinalString = myFinalString + "}";
                 System.out.println(myFinalString);
                 mybytes = myFinalString.getBytes();

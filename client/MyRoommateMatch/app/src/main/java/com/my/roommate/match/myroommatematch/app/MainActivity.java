@@ -13,6 +13,7 @@ import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.content.Intent;
 import android.content.Context;
+//import android.R;
 
 import javax.net.ssl.SSLContext;
 
@@ -59,7 +60,7 @@ public class MainActivity extends ActionBarActivity {
             chkFootball, chkUltimate, chkSwimming, chkHockey,
             chkSoftBall, chkTennis, chkOther;
     SeekBar grades;
-    EditText email, first, last, religion;
+    EditText email, first, last, religion, otherSport;
     Button submit;
 
     @Override
@@ -92,6 +93,7 @@ public class MainActivity extends ActionBarActivity {
         last = (EditText) findViewById(R.id.last);
         first = (EditText) findViewById(R.id.first);
         religion = (EditText) findViewById(R.id.religion);
+        otherSport = (EditText) findViewById(R.id.other_sport);
 
         //sports
         chkBasketball = (CheckBox) findViewById(R.id.basketball);
@@ -318,6 +320,13 @@ public class MainActivity extends ActionBarActivity {
                 Intent intent = new Intent (context, Second_Profile.class);
                 startActivity(intent);
 
+            }
+        });
+
+        chkOther.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                otherSport.setEnabled(true);
+                otherSport.setClickable(true);
             }
         });
 
