@@ -100,14 +100,14 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/my/roommate/match/myroommatematch/app/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36585367" vertical-offset="975" max-vertical-offset="5595">
-              <caret line="69" column="5" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.65648854" vertical-offset="4092" max-vertical-offset="5625">
+              <caret line="290" column="52" selection-start-line="290" selection-start-column="52" selection-end-line="290" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3524#11572#0" expanded="true" />
-                <element signature="e#11561#11562#0" expanded="true" />
-                <element signature="e#12939#13154#0" expanded="true" />
-                <element signature="e#13143#13144#0" expanded="true" />
+                <element signature="e#3544#12212#0" expanded="true" />
+                <element signature="e#11481#12152#0" expanded="true" />
+                <element signature="e#12133#12134#0" expanded="true" />
+                <element signature="e#12201#12202#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -861,10 +861,11 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager2.WIDTH" value="235" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="emulator-5554" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="TA5970S6MV" />
     <property name="LayoutCode.rearrangeEntriesJava" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../MyRoommateMatch copy" />
     <property name="FullScreen" value="false" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Virtual_Device" />
   </component>
   <component name="RunManager" selected="Android Application.app">
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
@@ -970,6 +971,15 @@
       <patterns />
       <method />
     </configuration>
+    <configuration default="true" type="AppEngineRunConfiguration" factoryName="App Engine DevAppServer">
+      <module name="" />
+      <setting name="serverAddress" value="" />
+      <setting name="sdkPath" value="" />
+      <setting name="serverPort" value="" />
+      <setting name="vmArgs" value="" />
+      <setting name="warPath" value="" />
+      <method />
+    </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="" />
       <option name="ACTIVITY_CLASS" value="" />
@@ -1035,6 +1045,26 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="750" extended-state="6" />
     <editor active="true" />
@@ -1051,9 +1081,9 @@
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16720517" sideWeight="0.12676056" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329653" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.6766561" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3154574" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329653" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16909385" sideWeight="0.08143939" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1138,10 +1168,10 @@
           <caret line="266" column="32" selection-start-line="266" selection-start-column="32" selection-end-line="266" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3524#11572#0" expanded="true" />
-            <element signature="e#11561#11562#0" expanded="true" />
-            <element signature="e#12939#13154#0" expanded="true" />
-            <element signature="e#13143#13144#0" expanded="true" />
+            <element signature="e#3544#12212#0" expanded="true" />
+            <element signature="e#11481#12152#0" expanded="true" />
+            <element signature="e#12133#12134#0" expanded="true" />
+            <element signature="e#12201#12202#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1171,10 +1201,10 @@
           <caret line="269" column="18" selection-start-line="269" selection-start-column="18" selection-end-line="269" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3524#11572#0" expanded="true" />
-            <element signature="e#11561#11562#0" expanded="true" />
-            <element signature="e#12939#13154#0" expanded="true" />
-            <element signature="e#13143#13144#0" expanded="true" />
+            <element signature="e#3544#12212#0" expanded="true" />
+            <element signature="e#11481#12152#0" expanded="true" />
+            <element signature="e#12133#12134#0" expanded="true" />
+            <element signature="e#12201#12202#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1204,10 +1234,10 @@
           <caret line="261" column="53" selection-start-line="261" selection-start-column="53" selection-end-line="261" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3524#11572#0" expanded="true" />
-            <element signature="e#11561#11562#0" expanded="true" />
-            <element signature="e#12939#13154#0" expanded="true" />
-            <element signature="e#13143#13144#0" expanded="true" />
+            <element signature="e#3544#12212#0" expanded="true" />
+            <element signature="e#11481#12152#0" expanded="true" />
+            <element signature="e#12133#12134#0" expanded="true" />
+            <element signature="e#12201#12202#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1237,10 +1267,10 @@
           <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3524#11572#0" expanded="true" />
-            <element signature="e#11561#11562#0" expanded="true" />
-            <element signature="e#12939#13154#0" expanded="true" />
-            <element signature="e#13143#13144#0" expanded="true" />
+            <element signature="e#3544#12212#0" expanded="true" />
+            <element signature="e#11481#12152#0" expanded="true" />
+            <element signature="e#12133#12134#0" expanded="true" />
+            <element signature="e#12201#12202#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1270,10 +1300,10 @@
           <caret line="81" column="68" selection-start-line="81" selection-start-column="68" selection-end-line="81" selection-end-column="68" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3524#11572#0" expanded="true" />
-            <element signature="e#11561#11562#0" expanded="true" />
-            <element signature="e#12939#13154#0" expanded="true" />
-            <element signature="e#13143#13144#0" expanded="true" />
+            <element signature="e#3544#12212#0" expanded="true" />
+            <element signature="e#11481#12152#0" expanded="true" />
+            <element signature="e#12133#12134#0" expanded="true" />
+            <element signature="e#12201#12202#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1303,10 +1333,10 @@
           <caret line="157" column="61" selection-start-line="157" selection-start-column="61" selection-end-line="157" selection-end-column="61" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3524#11572#0" expanded="true" />
-            <element signature="e#11561#11562#0" expanded="true" />
-            <element signature="e#12939#13154#0" expanded="true" />
-            <element signature="e#13143#13144#0" expanded="true" />
+            <element signature="e#3544#12212#0" expanded="true" />
+            <element signature="e#11481#12152#0" expanded="true" />
+            <element signature="e#12133#12134#0" expanded="true" />
+            <element signature="e#12201#12202#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1325,10 +1355,10 @@
           <caret line="30" column="29" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3524#11572#0" expanded="true" />
-            <element signature="e#11561#11562#0" expanded="true" />
-            <element signature="e#12939#13154#0" expanded="true" />
-            <element signature="e#13143#13144#0" expanded="true" />
+            <element signature="e#3544#12212#0" expanded="true" />
+            <element signature="e#11481#12152#0" expanded="true" />
+            <element signature="e#12133#12134#0" expanded="true" />
+            <element signature="e#12201#12202#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1373,14 +1403,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/my/roommate/match/myroommatematch/app/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36585367" vertical-offset="975" max-vertical-offset="5595">
-          <caret line="69" column="5" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.65648854" vertical-offset="4092" max-vertical-offset="5625">
+          <caret line="290" column="52" selection-start-line="290" selection-start-column="52" selection-end-line="290" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3524#11572#0" expanded="true" />
-            <element signature="e#11561#11562#0" expanded="true" />
-            <element signature="e#12939#13154#0" expanded="true" />
-            <element signature="e#13143#13144#0" expanded="true" />
+            <element signature="e#3544#12212#0" expanded="true" />
+            <element signature="e#11481#12152#0" expanded="true" />
+            <element signature="e#12133#12134#0" expanded="true" />
+            <element signature="e#12201#12202#0" expanded="true" />
           </folding>
         </state>
       </provider>

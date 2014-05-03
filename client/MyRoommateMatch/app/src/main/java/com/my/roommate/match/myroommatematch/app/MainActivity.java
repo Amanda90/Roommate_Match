@@ -21,6 +21,7 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.io.*;
+import java.lang.*;
 
 
 class Student{
@@ -105,7 +106,6 @@ public class MainActivity extends ActionBarActivity {
 
 
         submit.setOnClickListener(new View.OnClickListener() {
-
             public void onClick(View v) {
                 System.out.println("in onClick");
                 //get selected radio button from radio Group
@@ -289,16 +289,30 @@ public class MainActivity extends ActionBarActivity {
 
                 myFinalString = myFinalString + "];\n";
                 myFinalString = myFinalString + "}";
-                System.out.println("before");
                 System.out.println(myFinalString);
-                System.out.println("after");
                 mybytes = myFinalString.getBytes();
 
+                Thread myclient = new Thread(){
 
-                submitflg=1;
+                    @Override
+                    public void run(){
+                        System.out.println("in ClientThread");
+                        try {
+                            InetAddress serverAddr = InetAddress.getByName(SEVER_IP);
+                            sock = new Socket(serverAddr, SERVERPORT);
+                            OutputStream os = sock.getOutputStream();
+                            os.write(mybytes, 0, mybytes.length);
+                            sock.close();
+                        }catch(Exception e){
+                            e.printStackTrace();
+                        }
+                    }
+                };
+                myclient.start();
+
             }
         });
-        System.out.println("end");
+
     }
 
     private Socket sock;
@@ -306,7 +320,7 @@ public class MainActivity extends ActionBarActivity {
     private static final String SEVER_IP = "128.10.2.13";
 
 
-    /*class ClientThread implements Runnable {
+    class ClientThread implements Runnable {
         Boolean connected = true;
         @Override
         public void run() {
@@ -330,20 +344,8 @@ public class MainActivity extends ActionBarActivity {
                 e.printStackTrace();
             }
         }
-    }*/
-
-
-    public void addListenerOnSubmit() {
-        System.out.println("in addListenerOnSubmit");
-        submit = (Button) findViewById(R.id.submit);
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-              //  ClientThread myclient = new ClientThread();
-                //myclient.run();
-            }
-        });
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
