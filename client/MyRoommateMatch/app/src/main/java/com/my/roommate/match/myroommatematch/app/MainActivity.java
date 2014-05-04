@@ -54,11 +54,13 @@ public class MainActivity extends ActionBarActivity {
     byte[] mybytes;
     public int submitflg;
 
+    private boolean okay = true;
     private RadioGroup genderGrp, yearGrp, smokeGrp, sharedGrp, snoreGrp, partyGrp, bedGrp, greekGrp;
     private RadioButton genderBt, yearBt, smokeBt, sharedBt, snoreBt, partyBt, bedBt, greekBt;
     private CheckBox chkBasketball, chkBaseball, chkSoccer,
             chkFootball, chkUltimate, chkSwimming, chkHockey,
             chkSoftBall, chkTennis, chkOther;
+    private String myFinalString;
     SeekBar grades;
     EditText email, first, last, religion, otherSport;
     Button submit;
@@ -191,6 +193,7 @@ public class MainActivity extends ActionBarActivity {
                     smokeflg = true;
                 } else {
                     System.out.println("Smoke is not set");
+                    okay = false;
                 }
 
                 Boolean shareflg = null;
@@ -200,6 +203,7 @@ public class MainActivity extends ActionBarActivity {
                     shareflg = true;
                 }else{
                     System.out.println("Share is not set");
+                    okay = false;
                 }
 
                 Boolean snoreflg = null;
@@ -209,6 +213,7 @@ public class MainActivity extends ActionBarActivity {
                     snoreflg = true;
                 }else{
                     System.out.println("Snore is not set");
+                    okay = false;
                 }
 
                 Boolean partyflg = null;
@@ -218,6 +223,7 @@ public class MainActivity extends ActionBarActivity {
                     partyflg = true;
                 }else{
                     System.out.println("Party is not set");
+                    okay = false;
                 }
 
                 Boolean bedflg = null; //if student is an early bird?
@@ -227,6 +233,7 @@ public class MainActivity extends ActionBarActivity {
                     bedflg = false;
                 }else{
                     System.out.println("Bed is not set");
+                    okay = false;
                 }
 
                 Boolean greekflg = null;
@@ -236,51 +243,91 @@ public class MainActivity extends ActionBarActivity {
                     greekflg = false;
                 }else{
                     System.out.println("Greek is not set");
+                    okay = false;
                 }
 
                 myStudent.email = email.getText().toString();
+                if(myStudent.email == null){
+                    okay = false;
+                }
                 myStudent.first = first.getText().toString();
+                if(myStudent.first == null){
+                    okay = false;
+                }
                 myStudent.last = last.getText().toString();
+                if(myStudent.last == null){
+                    okay = false;
+                }
                 myStudent.gender = genderBt.getText().toString();
+                if(myStudent.gender == null){
+                    okay = false;
+                }
                 myStudent.year = yearBt.getText().toString();
+                if(myStudent.year == null){
+                    okay = false;
+                }
                 myStudent.smoke = smokeflg;
+                if(myStudent.smoke == null){
+                    okay = false;
+                }
                 myStudent.shared = shareflg;
+                if(myStudent.shared == null){
+                    okay = false;
+                }
                 myStudent.snore = snoreflg;
+                if(myStudent.snore == null){
+                    okay = false;
+                }
                 myStudent.party = partyflg;
+                if(myStudent.party == null){
+                    okay = false;
+                }
                 myStudent.bed = bedflg;
+                if(myStudent.bed == null){
+                    okay = false;
+                }
                 myStudent.religion = religion.getText().toString();
+                if(myStudent.religion == null){
+                    okay = false;
+                }
                 myStudent.grades = grades.getProgress();
                 myStudent.greek = greekflg;
+                if(myStudent.greek == null){
+                    okay = false;
+                }
 
+                if(okay) {
+                    System.out.println(myStudent.email);
+                    System.out.println(myStudent.first);
+                    System.out.println(myStudent.last);
+                    System.out.println(myStudent.gender);
+                    System.out.println(myStudent.year);
+                    System.out.println(myStudent.smoke);
+                    System.out.println(myStudent.shared);
+                    System.out.println(myStudent.snore);
+                    System.out.println(myStudent.party);
+                    System.out.println(myStudent.bed);
+                    System.out.println(myStudent.religion);
+                    System.out.println(myStudent.grades);
 
-                System.out.println(myStudent.email);
-                System.out.println(myStudent.first);
-                System.out.println(myStudent.last);
-                System.out.println(myStudent.gender);
-                System.out.println(myStudent.year);
-                System.out.println(myStudent.smoke);
-                System.out.println(myStudent.shared);
-                System.out.println(myStudent.snore);
-                System.out.println(myStudent.party);
-                System.out.println(myStudent.bed);
-                System.out.println(myStudent.religion);
-                System.out.println(myStudent.grades);
-
-                String myFinalString = "{\n"+
-                "\"email\": " + myStudent.email + ";\n"+
-                "\"fname\": " + myStudent.first + ";\n"+
-                "\"lname\": " + myStudent.last + ";\n"+
-                "\"gender\": " + myStudent.gender + ";\n"+
-                "\"year\": " + myStudent.year + ";\n"+
-                "\"smoking\": " + myStudent.smoke + ";\n"+
-                "\"pledge\": " + myStudent.greek + ";\n"+
-                "\"drink\": " + myStudent.party + ";\n"+
-                "\"religion\": " + myStudent.religion + ";\n"+
-                "\"shared_before\": " + myStudent.shared + ";\n"+
-                "\"early_bird\": " + myStudent.bed + ";\n"+
-                "\"snore\": " + myStudent.snore + ";\n"+
-                "\"importance_of_grades\": " + myStudent.grades + ";\n"+
-                "\"sports\"" + "(" + i + "):" + " [";
+                    myFinalString = "{\n" +
+                    "\"email\": " + myStudent.email + ";\n" +
+                    "\"fname\": " + myStudent.first + ";\n" +
+                    "\"lname\": " + myStudent.last + ";\n" +
+                    "\"gender\": " + myStudent.gender + ";\n" +
+                    "\"year\": " + myStudent.year + ";\n" +
+                    "\"smoking\": " + myStudent.smoke + ";\n" +
+                    "\"pledge\": " + myStudent.greek + ";\n" +
+                    "\"drink\": " + myStudent.party + ";\n" +
+                     "\"religion\": " + myStudent.religion + ";\n" +
+                     "\"shared_before\": " + myStudent.shared + ";\n" +
+                      "\"early_bird\": " + myStudent.bed + ";\n" +
+                      "\"snore\": " + myStudent.snore + ";\n" +
+                      "\"importance_of_grades\": " + myStudent.grades + ";\n" +
+                       "\"sports\"" + "(" + i + "):" + " [";
+                } else {
+                    System.out.println("Something wasn't filled out!!\n\n\n");
+                }
 
                 int k;
                 for(k=0; k<i; k++){
