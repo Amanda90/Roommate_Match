@@ -66,6 +66,13 @@
     <string name="snore_y">Yes</string>
     <string name="snore_n">No</string>
 
+    <string name="clean">How clean is your room?</string>
+    <string name="clean1">It’s clean, spotless, and beautiful</string>
+    <string name="clean2">Some clutter here, a little mess over there, but I know where everything is.</string>
+    <string name="clean3"> I drop my stuff right where I'm standing and it stays there until I need it again.</string>
+    <string name="clean4">A work in progress.</string>
+    <string name="clean5">A DISASTER! </string>
+
     <string name="religion">Religion, put NA if not applicable:</string>
 
     <string name="grades">How important are grades to you?</string>
