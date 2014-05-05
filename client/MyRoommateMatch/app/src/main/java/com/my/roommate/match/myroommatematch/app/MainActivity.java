@@ -1,5 +1,6 @@
 package com.my.roommate.match.myroommatematch.app;
 
+import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,9 +11,15 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.content.Intent;
 import android.content.Context;
+import android.widget.TextView;
+import android.*;
+import android.view.ViewGroup;
+
 //import android.R;
 
 import javax.net.ssl.SSLContext;
@@ -77,8 +84,6 @@ public class MainActivity extends ActionBarActivity {
 
     public void addListenerOnButton() {
         final Context context = this;
-
-        System.out.println("in listener");
         final Student myStudent = new Student();
         genderGrp = (RadioGroup) findViewById(R.id.genderGrp);
         yearGrp = (RadioGroup) findViewById(R.id.yearGrp);
@@ -115,6 +120,7 @@ public class MainActivity extends ActionBarActivity {
 
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                okay = true;
                 System.out.println("in onClick");
                 //get selected radio button from radio Group
                 int selectGender = genderGrp.getCheckedRadioButtonId();
@@ -187,63 +193,63 @@ public class MainActivity extends ActionBarActivity {
                 }
 
                 Boolean smokeflg = null;
-                if (smokeBt.getText().equals("No")) {
-                    smokeflg = false;
-                } else if (smokeBt.getText().equals("Yes")) {
-                    smokeflg = true;
-                } else {
+                if(smokeGrp.getCheckedRadioButtonId() == -1){
                     System.out.println("Smoke is not set");
                     okay = false;
+                } else if (smokeBt.getText().equals("No")) {
+                    smokeflg = false;
+                } else if(smokeBt.getText().equals("Yes")) {
+                    smokeflg = true;
                 }
 
                 Boolean shareflg = null;
-                if(sharedBt.getText().equals("No")){
+                if(sharedGrp.getCheckedRadioButtonId() == -1){
+                    System.out.println("Share is not set");
+                    okay = false;
+                }else if(sharedBt.getText().equals("No")){
                     shareflg = false;
                 }else if(sharedBt.getText().equals("Yes")){
                     shareflg = true;
-                }else{
-                    System.out.println("Share is not set");
-                    okay = false;
                 }
 
                 Boolean snoreflg = null;
-                if(snoreBt.getText().equals("No")){
+                if(snoreGrp.getCheckedRadioButtonId() == -1){
+                    System.out.println("Snore is not set");
+                    okay = false;
+                }else if(snoreBt.getText().equals("No")){
                     snoreflg = false;
                 }else if(snoreBt.getText().equals("Yes")){
                     snoreflg = true;
-                }else{
-                    System.out.println("Snore is not set");
-                    okay = false;
                 }
 
                 Boolean partyflg = null;
-                if(partyBt.getText().equals("No")){
+                if(partyGrp.getCheckedRadioButtonId() == -1) {
+                    System.out.println("Party is not set");
+                    okay = false;
+                }else if(partyBt.getText().equals("No")){
                     partyflg = false;
                 }else if(partyBt.getText().equals("Yes")){
                     partyflg = true;
-                }else{
-                    System.out.println("Party is not set");
-                    okay = false;
                 }
 
                 Boolean bedflg = null; //if student is an early bird?
-                if(bedBt.getText().equals("Early to bed, Early to rise")){
+                if(bedGrp.getCheckedRadioButtonId() == -1){
+                    System.out.println("Bed is not set");
+                    okay = false;
+                }else if(bedBt.getText().equals("Early to bed, Early to rise")){
                     bedflg = true;
                 }else if(bedBt.getText().equals("Late to bed, Late to rise")){
                     bedflg = false;
-                }else{
-                    System.out.println("Bed is not set");
-                    okay = false;
                 }
 
                 Boolean greekflg = null;
-                if(greekBt.getText().equals("Yes")){
+                if(greekGrp.getCheckedRadioButtonId() == -1){
+                    System.out.println("Greek is not set");
+                    okay = false;
+                } else if(greekBt.getText().equals("Yes")){
                     greekflg = true;
                 }else if(greekBt.getText().equals("No")){
                     greekflg = false;
-                }else{
-                    System.out.println("Greek is not set");
-                    okay = false;
                 }
 
                 myStudent.email = email.getText().toString();
@@ -258,43 +264,35 @@ public class MainActivity extends ActionBarActivity {
                 if(myStudent.last == null){
                     okay = false;
                 }
-                myStudent.gender = genderBt.getText().toString();
-                if(myStudent.gender == null){
+
+                if(genderGrp.getCheckedRadioButtonId() != -1) {
+                    myStudent.gender = genderBt.getText().toString();
+                } else {
                     okay = false;
+                    System.out.println("Gender not set.");
                 }
-                myStudent.year = yearBt.getText().toString();
-                if(myStudent.year == null){
+
+                if(yearGrp.getCheckedRadioButtonId() != -1) {
+                    myStudent.year = yearBt.getText().toString();
+                } else {
                     okay = false;
+                    System.out.println("Year not set.");
                 }
+
                 myStudent.smoke = smokeflg;
-                if(myStudent.smoke == null){
-                    okay = false;
-                }
                 myStudent.shared = shareflg;
-                if(myStudent.shared == null){
-                    okay = false;
-                }
                 myStudent.snore = snoreflg;
-                if(myStudent.snore == null){
-                    okay = false;
-                }
                 myStudent.party = partyflg;
-                if(myStudent.party == null){
-                    okay = false;
-                }
                 myStudent.bed = bedflg;
-                if(myStudent.bed == null){
-                    okay = false;
-                }
+
                 myStudent.religion = religion.getText().toString();
                 if(myStudent.religion == null){
                     okay = false;
                 }
+
                 myStudent.grades = grades.getProgress();
+
                 myStudent.greek = greekflg;
-                if(myStudent.greek == null){
-                    okay = false;
-                }
 
                 if(okay) {
                     System.out.println(myStudent.email);
@@ -319,54 +317,67 @@ public class MainActivity extends ActionBarActivity {
                     "\"smoking\": " + myStudent.smoke + ";\n" +
                     "\"pledge\": " + myStudent.greek + ";\n" +
                     "\"drink\": " + myStudent.party + ";\n" +
-                     "\"religion\": " + myStudent.religion + ";\n" +
-                     "\"shared_before\": " + myStudent.shared + ";\n" +
-                      "\"early_bird\": " + myStudent.bed + ";\n" +
-                      "\"snore\": " + myStudent.snore + ";\n" +
-                      "\"importance_of_grades\": " + myStudent.grades + ";\n" +
-                       "\"sports\"" + "(" + i + "):" + " [";
+                    "\"religion\": " + myStudent.religion + ";\n" +
+                    "\"shared_before\": " + myStudent.shared + ";\n" +
+                    "\"early_bird\": " + myStudent.bed + ";\n" +
+                    "\"snore\": " + myStudent.snore + ";\n" +
+                    "\"importance_of_grades\": " + myStudent.grades + ";\n" +
+                     "\"sports\"" + "(" + i + "):" + " [";
                 } else {
                     System.out.println("Something wasn't filled out!!\n\n\n");
-                }
-
-                int k;
-                for(k=0; k<i; k++){
-                //while(k<i){
-                    if(k!=(i-1)) {
-                        myFinalString = myFinalString + myStudent.sports[k];
-                        myFinalString = myFinalString + ",";
-                    } else {
-                        myFinalString = myFinalString + myStudent.sports[k];
+                    TextView error = new TextView(getApplicationContext());
+                    error.setText("Oops! I think you forgot something! Please answer all the questions!");
+                    error.setTextColor(Color.RED);
+                    RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                    params.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
+                    params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
+                    RelativeLayout layout = (RelativeLayout) findViewById(R.id.relative_layout);
+                    if(layout == null){
+                        System.out.println("Fart");
+                    }else {
+                        layout.addView(error, params);
                     }
                 }
-
-                myFinalString = myFinalString + "];\n";
-                myFinalString = myFinalString + "}";
-                System.out.println(myFinalString);
-                mybytes = myFinalString.getBytes();
-
-                Thread myclient = new Thread(){
-
-                    @Override
-                    public void run(){
-                        System.out.println("in ClientThread");
-                        try {
-                            InetAddress serverAddr = InetAddress.getByName(SEVER_IP);
-                            sock = new Socket(serverAddr, SERVERPORT);
-                            OutputStream os = sock.getOutputStream();
-                            os.write(mybytes, 0, mybytes.length);
-                            sock.close();
-                        }catch(Exception e){
-                            e.printStackTrace();
+                if(okay) {
+                    int k;
+                    for(k=0; k<i; k++){
+                    //while(k<i){
+                        if(k!=(i-1)) {
+                            myFinalString = myFinalString + myStudent.sports[k];
+                            myFinalString = myFinalString + ",";
+                        } else {
+                            myFinalString = myFinalString + myStudent.sports[k];
                         }
                     }
-                };
-                myclient.start();
 
-                //Switch to second Profile
-                Intent intent = new Intent (context, Second_Profile.class);
-                startActivity(intent);
+                    myFinalString = myFinalString + "];\n";
+                    myFinalString = myFinalString + "}";
+                    System.out.println(myFinalString);
+                    mybytes = myFinalString.getBytes();
 
+                    Thread myclient = new Thread(){
+
+                        @Override
+                        public void run(){
+                            System.out.println("in ClientThread");
+                            try {
+                                InetAddress serverAddr = InetAddress.getByName(SEVER_IP);
+                                sock = new Socket(serverAddr, SERVERPORT);
+                                OutputStream os = sock.getOutputStream();
+                                os.write(mybytes, 0, mybytes.length);
+                                sock.close();
+                            }catch(Exception e){
+                                e.printStackTrace();
+                            }
+                        }
+                    };
+                    myclient.start();
+
+                    //Switch to second Profile
+
+                    Intent intent = new Intent(context, Second_Profile.class);
+                    startActivity(intent);
+                }
             }
         });
 
