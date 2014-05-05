@@ -61,7 +61,7 @@ public class Second_Profile extends ActionBarActivity {
             chkSoftBall, chkTennis, chkOther;
     SeekBar grades, smoke_seek, share_seek, snore_seek, party_seek, bed_seek,
             greek_seek, sports_seek, religion_seek;
-    EditText religion;
+    EditText religion, otherSport;
     Button submit;
 
     @Override
@@ -95,6 +95,7 @@ public class Second_Profile extends ActionBarActivity {
         sports_seek = (SeekBar) findViewById(R.id.sports_imp);
 
         religion = (EditText) findViewById(R.id.religion);
+        otherSport = (EditText) findViewById(R.id.other_sport);
 
         //sports
         chkBasketball = (CheckBox) findViewById(R.id.basketball);
@@ -170,7 +171,8 @@ public class Second_Profile extends ActionBarActivity {
                     i++;
                 }
                 if(chkOther.isChecked()){
-                    myStudent.sports[i] = "other";
+                    myStudent.sports[i] = otherSport.getText().toString();
+                    i++;
                 }
 
                 int j=0;
@@ -316,6 +318,24 @@ public class Second_Profile extends ActionBarActivity {
             }
         });
 
+        chkOther.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if(chkOther.isChecked()) {
+                    otherSport.setEnabled(true);
+                    otherSport.setClickable(true);
+                    otherSport.setFocusable(true);
+                    otherSport.setFocusableInTouchMode(true);
+                    otherSport.setCursorVisible(true);
+                } else {
+                    otherSport.setEnabled(false);
+                    otherSport.setClickable(false);
+                    otherSport.setFocusable(false);
+                    otherSport.setFocusableInTouchMode(false);
+                    otherSport.setCursorVisible(false);
+                    otherSport.setText("");
+                }
+            }
+        });
     }
 
     private Socket sock;

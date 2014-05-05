@@ -335,6 +335,9 @@
             android:layout_toRightOf="@id/other"
             android:layout_below="@id/tennis"
             android:ems="10"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             />
 
         <!-- End of Check Box groups for Sports -->
@@ -473,6 +476,51 @@
                 android:checked="false" />
         </RadioGroup>
 
+        <TextView
+            android:text="@string/clean"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/clean_lab"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/snoreGrp" />
+        <RadioGroup
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:id="@+id/cleanGrp"
+            android:layout_below="@+id/clean_lab">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/clean1"
+                android:id="@+id/clean1"
+                android:checked="false" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/clean2"
+                android:id="@+id/clean2"
+                android:checked="false" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/clean3"
+                android:id="@+id/clean3"
+                android:checked="false" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/clean4"
+                android:id="@+id/clean4"
+                android:checked="false" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/clean5"
+                android:id="@+id/clean5"
+                android:checked="false" />
+        </RadioGroup>
+
         <!--Importance of grades-->
         <TextView
             android:text="@string/grades"
@@ -480,7 +528,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/grades_lab"
             android:layout_marginTop="10dp"
-            android:layout_below="@+id/snoreGrp" />
+            android:layout_below="@+id/cleanGrp" />
         <TextView
             android:text="@string/very"
             android:layout_width="wrap_content"

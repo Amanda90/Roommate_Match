@@ -181,7 +181,8 @@ public class MainActivity extends ActionBarActivity {
                     i++;
                 }
                 if(chkOther.isChecked()){
-                    myStudent.sports[i] = "other";
+                    myStudent.sports[i] = otherSport.getText().toString();
+                    i++;
                 }
 
                 int j=0;
@@ -383,8 +384,20 @@ public class MainActivity extends ActionBarActivity {
 
         chkOther.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                otherSport.setEnabled(true);
-                otherSport.setClickable(true);
+                if(chkOther.isChecked()) {
+                    otherSport.setEnabled(true);
+                    otherSport.setClickable(true);
+                    otherSport.setFocusable(true);
+                    otherSport.setFocusableInTouchMode(true);
+                    otherSport.setCursorVisible(true);
+                } else {
+                    otherSport.setEnabled(false);
+                    otherSport.setClickable(false);
+                    otherSport.setFocusable(false);
+                    otherSport.setFocusableInTouchMode(false);
+                    otherSport.setCursorVisible(false);
+                    otherSport.setText("");
+                }
             }
         });
 
