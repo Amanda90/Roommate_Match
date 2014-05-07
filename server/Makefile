@@ -1,22 +1,25 @@
 CXX = g++ -fPIC
-C = gcc
+C = gcc -g
 
 NETLIBS= -lnsl -I./mysql -lmysqlclient
 
-all: server compat.o parser.o
+all: get_pairs student_server compat.o parser.o
 
-server: server.cpp
-	$(CXX) -o server $@.cpp $(NETLIBS) -pthread
 compat.o: compat.c
-	$(C) -o compat.o compat.c $(NETLIBS)
+	$(C) -c compat.c $(NETLIBS)
 parser.o: parser.c
-	$(CXX) -o parser.o parser.c $(NETLIBS)
+	$(C) -c parser.c $(NETLIBS)
 	
+student_server: student_server.c compat.o parser.o
+	$(C) -o student_server student_server.c parser.o $(NETLIBS) -pthread
+
+get_pairs: compat.o get_pairs.c
+	$(C) -o get_pairs get_pairs.c compat.o $(NETLIBS)
 
 %.o: %.cc
 	@echo 'Building $@ from $<'
 	$(C) -o $@ -c -I. $<
 
 clean:
-	rm -f server
+	rm -f server *.o
 

@@ -117,6 +117,3 @@ void compat (long ** compat_table, int compat_table_size){
 //    return *compat_table;
 }
 
-void main (){
-    printf("Hello world\n");
-}
