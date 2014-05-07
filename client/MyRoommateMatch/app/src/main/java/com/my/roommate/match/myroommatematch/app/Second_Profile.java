@@ -1,5 +1,8 @@
 package com.my.roommate.match.myroommatematch.app;
 
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,7 +13,9 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.SeekBar;
+import android.widget.TextView;
 //import android.R;
 
 import javax.net.ssl.SSLContext;
@@ -43,6 +48,8 @@ class Second_Student{
     public String[] sports = new String[10];
     public int sports_imp;
     public int grades;
+    public int clean;
+    public int clean_imp;
 
     public Second_Student(){
         //DO STUFF
@@ -51,16 +58,16 @@ class Second_Student{
 
 
 public class Second_Profile extends ActionBarActivity {
+    private boolean okay = true;
     byte[] mybytes;
-    public int submitflg;
 
-    private RadioGroup smokeGrp, sharedGrp, snoreGrp, partyGrp, bedGrp, greekGrp;
-    private RadioButton smokeBt, sharedBt, snoreBt, partyBt, bedBt, greekBt;
+    private RadioGroup smokeGrp, sharedGrp, snoreGrp, partyGrp, bedGrp, greekGrp, cleanGrp;
+    private RadioButton smokeBt, sharedBt, snoreBt, partyBt, bedBt, greekBt, cleanBt;
     private CheckBox chkBasketball, chkBaseball, chkSoccer,
             chkFootball, chkUltimate, chkSwimming, chkHockey,
             chkSoftBall, chkTennis, chkOther;
     SeekBar grades, smoke_seek, share_seek, snore_seek, party_seek, bed_seek,
-            greek_seek, sports_seek, religion_seek;
+            greek_seek, sports_seek, religion_seek, clean_seek;
     EditText religion, otherSport;
     Button submit;
 
@@ -75,6 +82,7 @@ public class Second_Profile extends ActionBarActivity {
 
     public void addListenerOnButton() {
         System.out.println("in listener");
+        final Context context = this;
         final Second_Student myStudent = new Second_Student();
 
         smokeGrp = (RadioGroup) findViewById(R.id.smokeGrp);
@@ -83,6 +91,7 @@ public class Second_Profile extends ActionBarActivity {
         partyGrp = (RadioGroup) findViewById(R.id.partyGrp);
         bedGrp = (RadioGroup) findViewById(R.id.bedGrp);
         greekGrp = (RadioGroup) findViewById(R.id.greekGrp);
+        cleanGrp = (RadioGroup) findViewById(R.id.cleanGrp);
 
         grades = (SeekBar) findViewById(R.id.grades);
         smoke_seek = (SeekBar) findViewById(R.id.smoke_imp);
@@ -93,6 +102,8 @@ public class Second_Profile extends ActionBarActivity {
         party_seek = (SeekBar) findViewById(R.id.party_imp);
         greek_seek = (SeekBar) findViewById(R.id.greek_imp);
         sports_seek = (SeekBar) findViewById(R.id.sports_imp);
+        clean_seek = (SeekBar) findViewById(R.id.clean_imp);
+
 
         religion = (EditText) findViewById(R.id.religion);
         otherSport = (EditText) findViewById(R.id.other_sport);
@@ -115,6 +126,7 @@ public class Second_Profile extends ActionBarActivity {
 
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                okay = true;
                 System.out.println("in onClick");
                 //get selected radio button from radio Group
                 int selectSmoke = smokeGrp.getCheckedRadioButtonId();
@@ -123,6 +135,7 @@ public class Second_Profile extends ActionBarActivity {
                 int selectParty = partyGrp.getCheckedRadioButtonId();
                 int selectBed = bedGrp.getCheckedRadioButtonId();
                 int selectGreek = greekGrp.getCheckedRadioButtonId();
+                int selectClean = cleanGrp.getCheckedRadioButtonId();
 
                 //find the radio button by the returned id
                 smokeBt = (RadioButton) findViewById(selectSmoke);
@@ -131,6 +144,7 @@ public class Second_Profile extends ActionBarActivity {
                 partyBt = (RadioButton) findViewById(selectParty);
                 bedBt = (RadioButton) findViewById(selectBed);
                 greekBt = (RadioButton) findViewById(selectGreek);
+                cleanBt = (RadioButton) findViewById(selectClean);
 
                 //sports
                 int i=0;
@@ -184,58 +198,82 @@ public class Second_Profile extends ActionBarActivity {
                 }
 
                 Boolean smokeflg = null;
-                if (smokeBt.getText().equals("No")) {
-                    smokeflg = false;
-                } else if (smokeBt.getText().equals("Yes")) {
-                    smokeflg = true;
-                } else {
+                if(smokeGrp.getCheckedRadioButtonId() == -1){
                     System.out.println("Smoke is not set");
+                    okay = false;
+                } else if (smokeBt.getText().equals("No")) {
+                    smokeflg = false;
+                } else if(smokeBt.getText().equals("Yes")) {
+                    smokeflg = true;
                 }
 
                 Boolean shareflg = null;
-                if(sharedBt.getText().equals("No")){
+                if(sharedGrp.getCheckedRadioButtonId() == -1){
+                    System.out.println("Share is not set");
+                    okay = false;
+                }else if(sharedBt.getText().equals("No")){
                     shareflg = false;
                 }else if(sharedBt.getText().equals("Yes")){
                     shareflg = true;
-                }else{
-                    System.out.println("Share is not set");
                 }
 
                 Boolean snoreflg = null;
-                if(snoreBt.getText().equals("No")){
+                if(snoreGrp.getCheckedRadioButtonId() == -1){
+                    System.out.println("Snore is not set");
+                    okay = false;
+                }else if(snoreBt.getText().equals("No")){
                     snoreflg = false;
                 }else if(snoreBt.getText().equals("Yes")){
                     snoreflg = true;
-                }else{
-                    System.out.println("Snore is not set");
                 }
 
                 Boolean partyflg = null;
-                if(partyBt.getText().equals("No")){
+                if(partyGrp.getCheckedRadioButtonId() == -1){
+                    System.out.println("Party is not set");
+                    okay = false;
+                }else if(partyBt.getText().equals("No")){
                     partyflg = false;
                 }else if(partyBt.getText().equals("Yes")){
                     partyflg = true;
-                }else{
-                    System.out.println("Party is not set");
                 }
 
                 Boolean bedflg = null; //if student is an early bird?
-                if(bedBt.getText().equals("Early to bed, Early to rise")){
+                if(bedGrp.getCheckedRadioButtonId() == -1){
+                    System.out.println("Bed is not set");
+                    okay = false;
+                }else if(bedBt.getText().equals("Early to bed, Early to rise")){
                     bedflg = true;
                 }else if(bedBt.getText().equals("Late to bed, Late to rise")){
                     bedflg = false;
-                }else{
-                    System.out.println("Bed is not set");
                 }
 
                 Boolean greekflg = null;
-                if(greekBt.getText().equals("Yes")){
+                if(greekGrp.getCheckedRadioButtonId() == -1){
+                    System.out.println("Greek is not set");
+                    okay = false;
+                }else if(greekBt.getText().equals("Yes")){
                     greekflg = true;
                 }else if(greekBt.getText().equals("No")){
                     greekflg = false;
-                }else{
-                    System.out.println("Greek is not set");
                 }
+
+                if(cleanGrp.getCheckedRadioButtonId() == -1){
+                    okay = false;
+                    System.out.println("Clean not set.");
+                } else {
+                    if(cleanBt.getText().toString().equals("It’s clean, spotless, and beautiful.")){
+                        myStudent.clean = 1;
+                    }else if(cleanBt.getText().toString().equals("Some clutter here, a little mess over there, but I know where everything is.")){
+                        myStudent.clean = 2;
+                    }else if(cleanBt.getText().toString().equals("I drop my stuff right where I’m standing and it stays there until I need it again.")){
+                        myStudent.clean = 3;
+                    }else if(cleanBt.getText().toString().equals("A work in progress.")){
+                        myStudent.clean = 4;
+                    }else if(cleanBt.getText().toString().equals("A DISASTER!")) {
+                        myStudent.clean = 5;
+                    }
+                }
+
 
                 myStudent.smoke = smokeflg;
                 myStudent.smoke_imp = smoke_seek.getProgress();
@@ -253,69 +291,98 @@ public class Second_Profile extends ActionBarActivity {
                 myStudent.greek = greekflg;
                 myStudent.greek_imp = greek_seek.getProgress();
                 myStudent.sports_imp = sports_seek.getProgress();
+                myStudent.clean_imp = clean_seek.getProgress();
 
-
-                System.out.println(myStudent.smoke);
-                System.out.println(myStudent.shared);
-                System.out.println(myStudent.snore);
-                System.out.println(myStudent.party);
-                System.out.println(myStudent.bed);
-                System.out.println(myStudent.religion);
-                System.out.println(myStudent.grades);
-
-                String myFinalString = "{\n"+
-                "\"smoking\": " + myStudent.smoke + ";\n"+
-                "\"smoking_import\":" + myStudent.smoke_imp + ";\n"+
-                "\"pledge\": " + myStudent.greek + ";\n"+
-                "\"pledge_import\":" + myStudent.greek_imp + ";\n"+
-                "\"drink\": " + myStudent.party + ";\n"+
-                "\"drink_import\":" + myStudent.party_imp + ";\n"+
-                "\"religion\": " + myStudent.religion + ";\n"+
-                "\"religion_import\":" + myStudent.religion_imp + ";\n"+
-                "\"shared_before\": " + myStudent.shared + ";\n"+
-                "\"shared_import\":" + myStudent.share_imp + ";\n"+
-                "\"early_bird\": " + myStudent.bed + ";\n"+
-                "\"early_bird_import\":" + myStudent.bed_imp + ";\n"+
-                "\"snore\": " + myStudent.snore + ";\n"+
-                "\"snore_import\":" + myStudent.snore_imp + ";\n"+
-                "\"importance_of_grades\":" + myStudent.grades + ";\n"+
-                "\"sports\"" + "(" + i + "):" + " [";
-
-                int k;
-                for(k=0; k<i; k++){
-                //while(k<i){
-                    if(k!=(i-1)) {
-                        myFinalString = myFinalString + myStudent.sports[k];
-                        myFinalString = myFinalString + ",";
-                    } else {
-                        myFinalString = myFinalString + myStudent.sports[k];
-                    }
+                if(myStudent.religion == null){
+                    okay = false;
                 }
-                myFinalString = myFinalString + "];\n";
-                myFinalString = myFinalString + "\"sports_import\":" + myStudent.sports_imp + ";\n";
-                myFinalString = myFinalString + "}";
-                System.out.println(myFinalString);
-                mybytes = myFinalString.getBytes();
 
-                Thread myclient = new Thread(){
 
-                    @Override
-                    public void run(){
-                        System.out.println("in ClientThread");
-                        try {
-                            InetAddress serverAddr = InetAddress.getByName(SEVER_IP);
-                            sock = new Socket(serverAddr, SERVERPORT);
-                            OutputStream os = sock.getOutputStream();
-                            os.write(mybytes, 0, mybytes.length);
-                            sock.close();
-                        }catch(Exception e){
-                            e.printStackTrace();
+                if(okay) {
+                    System.out.println(myStudent.smoke);
+                    System.out.println(myStudent.shared);
+                    System.out.println(myStudent.snore);
+                    System.out.println(myStudent.party);
+                    System.out.println(myStudent.bed);
+                    System.out.println(myStudent.religion);
+                    System.out.println(myStudent.grades);
+
+                    String myFinalString = "{\n" +
+                            "\"smoking\": " + myStudent.smoke + ";\n" +
+                            "\"smoking_import\":" + myStudent.smoke_imp + ";\n" +
+                            "\"pledge\": " + myStudent.greek + ";\n" +
+                            "\"pledge_import\":" + myStudent.greek_imp + ";\n" +
+                            "\"drink\": " + myStudent.party + ";\n" +
+                            "\"drink_import\":" + myStudent.party_imp + ";\n" +
+                            "\"religion\": " + myStudent.religion + ";\n" +
+                            "\"religion_import\":" + myStudent.religion_imp + ";\n" +
+                            "\"shared_before\": " + myStudent.shared + ";\n" +
+                            "\"shared_import\":" + myStudent.share_imp + ";\n" +
+                            "\"early_bird\": " + myStudent.bed + ";\n" +
+                            "\"early_bird_import\":" + myStudent.bed_imp + ";\n" +
+                            "\"snore\": " + myStudent.snore + ";\n" +
+                            "\"snore_import\":" + myStudent.snore_imp + ";\n" +
+                            "\"clean\": " + myStudent.clean + ";\n" +
+                            "\"clean_import\":" + myStudent.clean_imp + ";\n" +
+                            "\"importance_of_grades\":" + myStudent.grades + ";\n" +
+                            "\"sports\"" + "(" + i + "):" + " [";
+
+                    int k;
+                    for (k = 0; k < i; k++) {
+                        //while(k<i){
+                        if (k != (i - 1)) {
+                            myFinalString = myFinalString + myStudent.sports[k];
+                            myFinalString = myFinalString + ",";
+                        } else {
+                            myFinalString = myFinalString + myStudent.sports[k];
                         }
                     }
-                };
-                myclient.start();
+                    myFinalString = myFinalString + "];\n";
+                    myFinalString = myFinalString + "\"sports_import\":" + myStudent.sports_imp + ";\n";
+                    myFinalString = myFinalString + "}";
+                    System.out.println(myFinalString);
+                    mybytes = myFinalString.getBytes();
+                }else{
+                    System.out.println("Something wasn't filled out!!\n\n\n");
+                    TextView error = new TextView(getApplicationContext());
+                    error.setText("Oops! I think you forgot something! Please answer all the questions!");
+                    error.setTextColor(Color.RED);
+                    RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                    params.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
+                    params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
+                    RelativeLayout layout = (RelativeLayout) findViewById(R.id.relative_second);
+                    if(layout == null){
+                        System.out.println("Fart");
+                    }else {
+                        layout.addView(error, params);
+                    }
+                }
 
+                if(okay) {
+                    Thread myclient = new Thread() {
+
+                        @Override
+                        public void run() {
+                            System.out.println("in ClientThread");
+                            try {
+                                InetAddress serverAddr = InetAddress.getByName(SEVER_IP);
+                                sock = new Socket(serverAddr, SERVERPORT);
+                                OutputStream os = sock.getOutputStream();
+                                os.write(mybytes, 0, mybytes.length);
+                                sock.close();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    };
+                    myclient.start();
+
+                    Intent intent = new Intent(context, Thank_You.class);
+                    startActivity(intent);
+                }
             }
+
+
         });
 
         chkOther.setOnClickListener(new View.OnClickListener() {

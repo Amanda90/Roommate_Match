@@ -69,11 +69,28 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
         <TextView
+            android:text="@string/bday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bday_lab"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/last_lab" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            android:ems="10"
+            android:id="@+id/bday"
+            android:layout_below="@+id/last_lab"
+            android:layout_toRightOf="@+id/bday_lab"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/gender"
             android:id="@+id/gender_lab"
-            android:layout_below="@+id/last_lab"
+            android:layout_below="@+id/bday_lab"
             android:layout_marginTop="10dp"/>
         <!--Gender-->
         <RadioGroup

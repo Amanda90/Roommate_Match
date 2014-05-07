@@ -35,6 +35,7 @@ import java.lang.*;
 
 
 class Student{
+    public String id;
     public String email;
     public String first;
     public String last;
@@ -49,6 +50,7 @@ class Student{
     public String religion;
     public String[] sports = new String[10];
     public int grades;
+    public int clean;
 
     public Student(){
         //DO STUFF
@@ -62,14 +64,14 @@ public class MainActivity extends ActionBarActivity {
     public int submitflg;
 
     private boolean okay = true;
-    private RadioGroup genderGrp, yearGrp, smokeGrp, sharedGrp, snoreGrp, partyGrp, bedGrp, greekGrp;
-    private RadioButton genderBt, yearBt, smokeBt, sharedBt, snoreBt, partyBt, bedBt, greekBt;
+    private RadioGroup genderGrp, yearGrp, smokeGrp, sharedGrp, snoreGrp, partyGrp, bedGrp, greekGrp, cleanGrp;
+    private RadioButton genderBt, yearBt, smokeBt, sharedBt, snoreBt, partyBt, bedBt, greekBt, cleanBt;
     private CheckBox chkBasketball, chkBaseball, chkSoccer,
             chkFootball, chkUltimate, chkSwimming, chkHockey,
             chkSoftBall, chkTennis, chkOther;
     private String myFinalString;
     SeekBar grades;
-    EditText email, first, last, religion, otherSport;
+    EditText email, first, last, religion, otherSport, bday;
     Button submit;
 
     @Override
@@ -93,6 +95,7 @@ public class MainActivity extends ActionBarActivity {
         partyGrp = (RadioGroup) findViewById(R.id.partyGrp);
         bedGrp = (RadioGroup) findViewById(R.id.bedGrp);
         greekGrp = (RadioGroup) findViewById(R.id.greekGrp);
+        cleanGrp = (RadioGroup) findViewById(R.id.cleanGrp);
 
         grades = (SeekBar) findViewById(R.id.grades);
 
@@ -101,6 +104,7 @@ public class MainActivity extends ActionBarActivity {
         first = (EditText) findViewById(R.id.first);
         religion = (EditText) findViewById(R.id.religion);
         otherSport = (EditText) findViewById(R.id.other_sport);
+        bday = (EditText) findViewById(R.id.bday);
 
         //sports
         chkBasketball = (CheckBox) findViewById(R.id.basketball);
@@ -131,6 +135,7 @@ public class MainActivity extends ActionBarActivity {
                 int selectParty = partyGrp.getCheckedRadioButtonId();
                 int selectBed = bedGrp.getCheckedRadioButtonId();
                 int selectGreek = greekGrp.getCheckedRadioButtonId();
+                int selectClean = cleanGrp.getCheckedRadioButtonId();
 
                 //find the radio button by the returned id
                 genderBt = (RadioButton) findViewById(selectGender);
@@ -141,6 +146,7 @@ public class MainActivity extends ActionBarActivity {
                 partyBt = (RadioButton) findViewById(selectParty);
                 bedBt = (RadioButton) findViewById(selectBed);
                 greekBt = (RadioButton) findViewById(selectGreek);
+                cleanBt = (RadioButton) findViewById(selectClean);
 
                 //sports
                 int i=0;
@@ -253,6 +259,14 @@ public class MainActivity extends ActionBarActivity {
                     greekflg = false;
                 }
 
+                //Generate ID
+                char firsti = myStudent.first.charAt(0);
+                char lasti = myStudent.last.charAt(0);
+                myStudent.id = myStudent.id + firsti +  lasti + bday;
+
+                System.out.println("HERE!!!!!!!!" + myStudent.id);
+
+
                 myStudent.email = email.getText().toString();
                 if(myStudent.email == null){
                     okay = false;
@@ -278,6 +292,23 @@ public class MainActivity extends ActionBarActivity {
                 } else {
                     okay = false;
                     System.out.println("Year not set.");
+                }
+
+                if(cleanGrp.getCheckedRadioButtonId() == -1){
+                    okay = false;
+                    System.out.println("Clean not set.");
+                } else {
+                    if(cleanBt.getText().toString().equals("It’s clean, spotless, and beautiful.")){
+                        myStudent.clean = 1;
+                    }else if(cleanBt.getText().toString().equals("Some clutter here, a little mess over there, but I know where everything is.")){
+                        myStudent.clean = 2;
+                    }else if(cleanBt.getText().toString().equals("I drop my stuff right where I’m standing and it stays there until I need it again.")){
+                        myStudent.clean = 3;
+                    }else if(cleanBt.getText().toString().equals("A work in progress.")){
+                        myStudent.clean = 4;
+                    }else if(cleanBt.getText().toString().equals("A DISASTER!")) {
+                        myStudent.clean = 5;
+                    }
                 }
 
                 myStudent.smoke = smokeflg;
@@ -322,8 +353,25 @@ public class MainActivity extends ActionBarActivity {
                     "\"shared_before\": " + myStudent.shared + ";\n" +
                     "\"early_bird\": " + myStudent.bed + ";\n" +
                     "\"snore\": " + myStudent.snore + ";\n" +
+                    "\"clean\": " + myStudent.clean + ";\n" +
                     "\"importance_of_grades\": " + myStudent.grades + ";\n" +
                      "\"sports\"" + "(" + i + "):" + " [";
+
+                    int k;
+                    for(k=0; k<i; k++){
+                        //while(k<i){
+                        if(k!=(i-1)) {
+                            myFinalString = myFinalString + myStudent.sports[k];
+                            myFinalString = myFinalString + ",";
+                        } else {
+                            myFinalString = myFinalString + myStudent.sports[k];
+                        }
+                    }
+                    myFinalString = myFinalString + "];\n";
+                    myFinalString = myFinalString + "}";
+                    System.out.println(myFinalString);
+                    mybytes = myFinalString.getBytes();
+
                 } else {
                     System.out.println("Something wasn't filled out!!\n\n\n");
                     TextView error = new TextView(getApplicationContext());
@@ -340,21 +388,6 @@ public class MainActivity extends ActionBarActivity {
                     }
                 }
                 if(okay) {
-                    int k;
-                    for(k=0; k<i; k++){
-                    //while(k<i){
-                        if(k!=(i-1)) {
-                            myFinalString = myFinalString + myStudent.sports[k];
-                            myFinalString = myFinalString + ",";
-                        } else {
-                            myFinalString = myFinalString + myStudent.sports[k];
-                        }
-                    }
-
-                    myFinalString = myFinalString + "];\n";
-                    myFinalString = myFinalString + "}";
-                    System.out.println(myFinalString);
-                    mybytes = myFinalString.getBytes();
 
                     Thread myclient = new Thread(){
 

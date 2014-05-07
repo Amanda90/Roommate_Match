@@ -7,6 +7,7 @@
     <string name="email">Email:</string>
     <string name="first">First Name:</string>
     <string name="last">Last Name:</string>
+    <string name="bday">Birthday (dd/mm/yyyy):</string>
     <string name="gender">Gender:</string>
     <string name="year">Year:</string>
     <string name="smoking">Do you smoke?</string>
@@ -21,6 +22,7 @@
     <string name="senior">Senior</string>
     <string name="spr_senior">Super Senior</string>
     <string name="grad_student">Graduate Student</string>
+    <string name="thank_you">Thank You!!</string>
 
     <string name="smoke_y">Yes</string>
     <string name="smoke_n">No</string>
@@ -67,11 +69,11 @@
     <string name="snore_n">No</string>
 
     <string name="clean">How clean is your room?</string>
-    <string name="clean1">It’s clean, spotless, and beautiful</string>
+    <string name="clean1">It’s clean, spotless, and beautiful.</string>
     <string name="clean2">Some clutter here, a little mess over there, but I know where everything is.</string>
-    <string name="clean3"> I drop my stuff right where I'm standing and it stays there until I need it again.</string>
+    <string name="clean3">I drop my stuff right where I’m standing and it stays there until I need it again.</string>
     <string name="clean4">A work in progress.</string>
-    <string name="clean5">A DISASTER! </string>
+    <string name="clean5">A DISASTER!</string>
 
     <string name="religion">Religion, put NA if not applicable:</string>
 

@@ -20,6 +20,10 @@
             android:name="com.my.roommate.match.myroommatematch.app.Second_Profile"
             android:label="Second Profile">
         </activity>
+        <activity
+            android:name="com.my.roommate.match.myroommatematch.app.Thank_You"
+            android:label="Thank You">
+        </activity>
     </application>
 
 </manifest>
