@@ -1,5 +1,7 @@
 package com.my.roommate.match.myroommatematch.app;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -12,14 +14,8 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.SeekBar;
-import android.content.Intent;
-import android.content.Context;
 import android.widget.TextView;
-import android.*;
-import android.view.ViewGroup;
-
 //import android.R;
 
 import javax.net.ssl.SSLContext;
@@ -34,61 +30,61 @@ import java.io.*;
 import java.lang.*;
 
 
-class Student{
-    public String id;
-    public String email;
-    public String first;
-    public String last;
-    public String gender;
-    public String year;
+class Second_Student{
     public Boolean smoke;
+    public int smoke_imp;
     public Boolean greek;
+    public int greek_imp;
     public Boolean shared;
+    public int share_imp;
     public Boolean snore;
+    public int snore_imp;
     public Boolean party;
+    public int party_imp;
     public Boolean bed;
+    public int bed_imp;
     public String religion;
+    public int religion_imp;
     public String[] sports = new String[10];
+    public int sports_imp;
     public int grades;
     public int clean;
+    public int clean_imp;
 
-    public Student(){
+    public Second_Student(){
         //DO STUFF
-        this.email = null;
     }
 }
 
 
-public class MainActivity extends ActionBarActivity {
-    byte[] mybytes;
-    public int submitflg;
-
+public class Second_Profile extends ActionBarActivity {
     private boolean okay = true;
-    private RadioGroup genderGrp, yearGrp, smokeGrp, sharedGrp, snoreGrp, partyGrp, bedGrp, greekGrp, cleanGrp;
-    private RadioButton genderBt, yearBt, smokeBt, sharedBt, snoreBt, partyBt, bedBt, greekBt, cleanBt;
+    byte[] mybytes;
+
+    private RadioGroup smokeGrp, sharedGrp, snoreGrp, partyGrp, bedGrp, greekGrp, cleanGrp;
+    private RadioButton smokeBt, sharedBt, snoreBt, partyBt, bedBt, greekBt, cleanBt;
     private CheckBox chkBasketball, chkBaseball, chkSoccer,
             chkFootball, chkUltimate, chkSwimming, chkHockey,
             chkSoftBall, chkTennis, chkOther;
-    private String myFinalString;
-    SeekBar grades;
-    EditText email, first, last, religion, otherSport, bday;
+    SeekBar grades, smoke_seek, share_seek, snore_seek, party_seek, bed_seek,
+            greek_seek, sports_seek, religion_seek, clean_seek;
+    EditText religion, otherSport;
     Button submit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        System.out.println("HERE!!!!");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.second_profile);
 
         addListenerOnButton();
         //addListenerOnSubmit();
     }
 
     public void addListenerOnButton() {
+        System.out.println("in listener");
         final Context context = this;
-        final Student myStudent = new Student();
-        genderGrp = (RadioGroup) findViewById(R.id.genderGrp);
-        yearGrp = (RadioGroup) findViewById(R.id.yearGrp);
+        final Second_Student myStudent = new Second_Student();
+
         smokeGrp = (RadioGroup) findViewById(R.id.smokeGrp);
         sharedGrp = (RadioGroup) findViewById(R.id.shareGrp);
         snoreGrp = (RadioGroup) findViewById(R.id.snoreGrp);
@@ -98,13 +94,19 @@ public class MainActivity extends ActionBarActivity {
         cleanGrp = (RadioGroup) findViewById(R.id.cleanGrp);
 
         grades = (SeekBar) findViewById(R.id.grades);
+        smoke_seek = (SeekBar) findViewById(R.id.smoke_imp);
+        snore_seek = (SeekBar) findViewById(R.id.snore_imp);
+        share_seek = (SeekBar) findViewById(R.id.share_imp);
+        bed_seek = (SeekBar) findViewById(R.id.bed_imp);
+        religion_seek = (SeekBar) findViewById(R.id.religion_imp);
+        party_seek = (SeekBar) findViewById(R.id.party_imp);
+        greek_seek = (SeekBar) findViewById(R.id.greek_imp);
+        sports_seek = (SeekBar) findViewById(R.id.sports_imp);
+        clean_seek = (SeekBar) findViewById(R.id.clean_imp);
 
-        email = (EditText) findViewById(R.id.email);
-        last = (EditText) findViewById(R.id.last);
-        first = (EditText) findViewById(R.id.first);
+
         religion = (EditText) findViewById(R.id.religion);
         otherSport = (EditText) findViewById(R.id.other_sport);
-        bday = (EditText) findViewById(R.id.bday);
 
         //sports
         chkBasketball = (CheckBox) findViewById(R.id.basketball);
@@ -127,8 +129,6 @@ public class MainActivity extends ActionBarActivity {
                 okay = true;
                 System.out.println("in onClick");
                 //get selected radio button from radio Group
-                int selectGender = genderGrp.getCheckedRadioButtonId();
-                int selectYear = yearGrp.getCheckedRadioButtonId();
                 int selectSmoke = smokeGrp.getCheckedRadioButtonId();
                 int selectShare = sharedGrp.getCheckedRadioButtonId();
                 int selectSnore = snoreGrp.getCheckedRadioButtonId();
@@ -138,8 +138,6 @@ public class MainActivity extends ActionBarActivity {
                 int selectClean = cleanGrp.getCheckedRadioButtonId();
 
                 //find the radio button by the returned id
-                genderBt = (RadioButton) findViewById(selectGender);
-                yearBt = (RadioButton) findViewById(selectYear);
                 smokeBt = (RadioButton) findViewById(selectSmoke);
                 sharedBt = (RadioButton) findViewById(selectShare);
                 snoreBt = (RadioButton) findViewById(selectSnore);
@@ -230,7 +228,7 @@ public class MainActivity extends ActionBarActivity {
                 }
 
                 Boolean partyflg = null;
-                if(partyGrp.getCheckedRadioButtonId() == -1) {
+                if(partyGrp.getCheckedRadioButtonId() == -1){
                     System.out.println("Party is not set");
                     okay = false;
                 }else if(partyBt.getText().equals("No")){
@@ -253,51 +251,10 @@ public class MainActivity extends ActionBarActivity {
                 if(greekGrp.getCheckedRadioButtonId() == -1){
                     System.out.println("Greek is not set");
                     okay = false;
-                } else if(greekBt.getText().equals("Yes")){
+                }else if(greekBt.getText().equals("Yes")){
                     greekflg = true;
                 }else if(greekBt.getText().equals("No")){
                     greekflg = false;
-                }
-
-                myStudent.email = email.getText().toString();
-                if(myStudent.email == null){
-                    okay = false;
-                }
-                myStudent.first = first.getText().toString();
-                if(myStudent.first == null){
-                    okay = false;
-                }
-                myStudent.last = last.getText().toString();
-                if(myStudent.last == null){
-                    okay = false;
-                }
-
-                //Generate ID
-                StringBuilder tempid = new StringBuilder();
-                char firsti = myStudent.first.charAt(0);
-                char lasti = myStudent.last.charAt(0);
-
-
-                tempid.append(firsti);
-                tempid.append(lasti);
-
-                String realbday = bday.getText().toString().replace("/", "");
-
-                myStudent.id = tempid + realbday;
-
-
-                if(genderGrp.getCheckedRadioButtonId() != -1) {
-                    myStudent.gender = genderBt.getText().toString();
-                } else {
-                    okay = false;
-                    System.out.println("Gender not set.");
-                }
-
-                if(yearGrp.getCheckedRadioButtonId() != -1) {
-                    myStudent.year = yearBt.getText().toString();
-                } else {
-                    okay = false;
-                    System.out.println("Year not set.");
                 }
 
                 if(cleanGrp.getCheckedRadioButtonId() == -1){
@@ -317,27 +274,31 @@ public class MainActivity extends ActionBarActivity {
                     }
                 }
 
-                myStudent.smoke = smokeflg;
-                myStudent.shared = shareflg;
-                myStudent.snore = snoreflg;
-                myStudent.party = partyflg;
-                myStudent.bed = bedflg;
 
+                myStudent.smoke = smokeflg;
+                myStudent.smoke_imp = smoke_seek.getProgress();
+                myStudent.shared = shareflg;
+                myStudent.share_imp = share_seek.getProgress();
+                myStudent.snore = snoreflg;
+                myStudent.snore_imp = snore_seek.getProgress();
+                myStudent.party = partyflg;
+                myStudent.party_imp = party_seek.getProgress();
+                myStudent.bed = bedflg;
+                myStudent.bed_imp = bed_seek.getProgress();
                 myStudent.religion = religion.getText().toString();
+                myStudent.religion_imp = religion_seek.getProgress();
+                myStudent.grades = grades.getProgress();
+                myStudent.greek = greekflg;
+                myStudent.greek_imp = greek_seek.getProgress();
+                myStudent.sports_imp = sports_seek.getProgress();
+                myStudent.clean_imp = clean_seek.getProgress();
+
                 if(myStudent.religion == null){
                     okay = false;
                 }
 
-                myStudent.grades = grades.getProgress();
-
-                myStudent.greek = greekflg;
 
                 if(okay) {
-                    System.out.println(myStudent.email);
-                    System.out.println(myStudent.first);
-                    System.out.println(myStudent.last);
-                    System.out.println(myStudent.gender);
-                    System.out.println(myStudent.year);
                     System.out.println(myStudent.smoke);
                     System.out.println(myStudent.shared);
                     System.out.println(myStudent.snore);
@@ -345,30 +306,40 @@ public class MainActivity extends ActionBarActivity {
                     System.out.println(myStudent.bed);
                     System.out.println(myStudent.religion);
                     System.out.println(myStudent.grades);
+                    String S_ID;
+                    Bundle extras = getIntent().getExtras();
+                    if(extras != null){
+                        S_ID = extras.getString("S_ID");
+                    } else {
+                        S_ID = null;
+                    }
 
-                    myFinalString = "{\n" +
-                    "\"form\": 1\n"+
-                    "\"s_id\": " + myStudent.id + ";\n" +
-                    "\"email\": " + myStudent.email + ";\n" +
-                    "\"fname\": " + myStudent.first + ";\n" +
-                    "\"lname\": " + myStudent.last + ";\n" +
-                    "\"gender\": " + myStudent.gender + ";\n" +
-                    "\"year\": " + myStudent.year + ";\n" +
-                    "\"smoking\": " + myStudent.smoke + ";\n" +
-                    "\"pledge\": " + myStudent.greek + ";\n" +
-                    "\"drink\": " + myStudent.party + ";\n" +
-                    "\"religion\": " + myStudent.religion + ";\n" +
-                    "\"shared_before\": " + myStudent.shared + ";\n" +
-                    "\"early_bird\": " + myStudent.bed + ";\n" +
-                    "\"snore\": " + myStudent.snore + ";\n" +
-                    "\"clean\": " + myStudent.clean + ";\n" +
-                    "\"importance_of_grades\": " + myStudent.grades + ";\n" +
-                     "\"sports\"" + "(" + i + "):" + " [";
+                    String myFinalString = "{\n" +
+                            "\"form\": 2\n"+
+                            "\"s_id\": " + S_ID + ";\n" +
+                            "\"smoking\": " + myStudent.smoke + ";\n" +
+                            "\"smoking_import\":" + myStudent.smoke_imp + ";\n" +
+                            "\"pledge\": " + myStudent.greek + ";\n" +
+                            "\"pledge_import\":" + myStudent.greek_imp + ";\n" +
+                            "\"drink\": " + myStudent.party + ";\n" +
+                            "\"drink_import\":" + myStudent.party_imp + ";\n" +
+                            "\"religion\": " + myStudent.religion + ";\n" +
+                            "\"religion_import\":" + myStudent.religion_imp + ";\n" +
+                            "\"shared_before\": " + myStudent.shared + ";\n" +
+                            "\"shared_import\":" + myStudent.share_imp + ";\n" +
+                            "\"early_bird\": " + myStudent.bed + ";\n" +
+                            "\"early_bird_import\":" + myStudent.bed_imp + ";\n" +
+                            "\"snore\": " + myStudent.snore + ";\n" +
+                            "\"snore_import\":" + myStudent.snore_imp + ";\n" +
+                            "\"clean\": " + myStudent.clean + ";\n" +
+                            "\"clean_import\":" + myStudent.clean_imp + ";\n" +
+                            "\"importance_of_grades\":" + myStudent.grades + ";\n" +
+                            "\"sports\"" + "(" + i + "):" + " [";
 
                     int k;
-                    for(k=0; k<i; k++){
+                    for (k = 0; k < i; k++) {
                         //while(k<i){
-                        if(k!=(i-1)) {
+                        if (k != (i - 1)) {
                             myFinalString = myFinalString + myStudent.sports[k];
                             myFinalString = myFinalString + ",";
                         } else {
@@ -376,11 +347,11 @@ public class MainActivity extends ActionBarActivity {
                         }
                     }
                     myFinalString = myFinalString + "];\n";
+                    myFinalString = myFinalString + "\"sports_import\":" + myStudent.sports_imp + ";\n";
                     myFinalString = myFinalString + "}";
                     System.out.println(myFinalString);
                     mybytes = myFinalString.getBytes();
-
-                } else {
+                }else{
                     System.out.println("Something wasn't filled out!!\n\n\n");
                     TextView error = new TextView(getApplicationContext());
                     error.setText("Oops! I think you forgot something! Please answer all the questions!");
@@ -388,19 +359,19 @@ public class MainActivity extends ActionBarActivity {
                     RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
                     params.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
                     params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
-                    RelativeLayout layout = (RelativeLayout) findViewById(R.id.relative_layout);
+                    RelativeLayout layout = (RelativeLayout) findViewById(R.id.relative_second);
                     if(layout == null){
                         System.out.println("Fart");
                     }else {
                         layout.addView(error, params);
                     }
                 }
-                if(okay) {
 
-                    Thread myclient = new Thread(){
+                if(okay) {
+                    Thread myclient = new Thread() {
 
                         @Override
-                        public void run(){
+                        public void run() {
                             System.out.println("in ClientThread");
                             try {
                                 InetAddress serverAddr = InetAddress.getByName(SEVER_IP);
@@ -408,21 +379,19 @@ public class MainActivity extends ActionBarActivity {
                                 OutputStream os = sock.getOutputStream();
                                 os.write(mybytes, 0, mybytes.length);
                                 sock.close();
-                            }catch(Exception e){
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                         }
                     };
                     myclient.start();
 
-                    //Switch to second Profile
-
-                    Intent intent = new Intent(context, Second_Profile.class);
-                    intent.putExtra("S_ID", myStudent.id);
+                    Intent intent = new Intent(context, Thank_You.class);
                     startActivity(intent);
-
                 }
             }
+
+
         });
 
         chkOther.setOnClickListener(new View.OnClickListener() {
@@ -443,7 +412,6 @@ public class MainActivity extends ActionBarActivity {
                 }
             }
         });
-
     }
 
     private Socket sock;

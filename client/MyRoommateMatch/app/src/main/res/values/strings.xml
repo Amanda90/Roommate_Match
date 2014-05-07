@@ -7,6 +7,7 @@
     <string name="email">Email:</string>
     <string name="first">First Name:</string>
     <string name="last">Last Name:</string>
+    <string name="bday">Birthday (dd/mm/yyyy):</string>
     <string name="gender">Gender:</string>
     <string name="year">Year:</string>
     <string name="smoking">Do you smoke?</string>
@@ -21,6 +22,7 @@
     <string name="senior">Senior</string>
     <string name="spr_senior">Super Senior</string>
     <string name="grad_student">Graduate Student</string>
+    <string name="thank_you">Thank you for filling out the profiles!!\n Your match will be emailed\n to you in a couple weeks</string>
 
     <string name="smoke_y">Yes</string>
     <string name="smoke_n">No</string>
@@ -66,10 +68,30 @@
     <string name="snore_y">Yes</string>
     <string name="snore_n">No</string>
 
+    <string name="clean">How clean is your room?</string>
+    <string name="clean1">It’s clean, spotless, and beautiful.</string>
+    <string name="clean2">Some clutter here, a little mess over there, but I know where everything is.</string>
+    <string name="clean3">I drop my stuff right where I’m standing and it stays there until I need it again.</string>
+    <string name="clean4">A work in progress.</string>
+    <string name="clean5">A DISASTER!</string>
+
     <string name="religion">Religion, put NA if not applicable:</string>
 
     <string name="grades">How important are grades to you?</string>
-    <string name="grades_very">Very Important</string>
-    <string name="grades_notvery">Not Very Important</string>
+    <string name="very">Very Important</string>
+    <string name="notvery">Not Very Important</string>
+
+    <string name="roommate">What does your ideal roommate look like?</string>
+    <string name="smoke_rm">Do they smoke?</string>
+    <string name="greek_rm">Are they in greek life?</string>
+    <string name="sports_rm">Do they play sports?</string>
+    <string name="bed_rm">What are their sleeping patterns?</string>
+    <string name="share_rm">Have they shared a room before?</string>
+    <string name="party_rm">Do they like to go out or party?</string>
+    <string name="religion_rm">Religious Preference (NA if not applicable):</string>
+    <string name="snore_rm">Do they snore?</string>
+    <string name="grades_rm">Roommate importance of grades?</string>
+
+    <string name="importance">How important is this trait to you?</string>
 
 </resources>
