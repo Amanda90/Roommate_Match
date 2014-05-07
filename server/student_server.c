@@ -1,4 +1,30 @@
-//thing
+#include <mysql.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <netdb.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+#include <pthread.h>
+#include <signal.h>
+#include <string.h>
+#include <time.h>
+
+#define HTML 1
+#define GIF 2
+#define PLAIN 3
+#define INDEX 4
+#define DEFAULT 5
+#define PROCESS 6
+#define THREAD 7
+#define POOL 8
+#define SCRIPT 9
+#define ICONS 10
+#define DEFAULTPORT 3377
+#define SERVER "localhost"
+#define DATABASE "imgs"
+int QueueLength = 5;
 const char * usage =
 "                                                               \n"
 "Server 		                                                \n"
@@ -12,37 +38,6 @@ const char * usage =
 "Where 1024 < port < 65536.     						        \n"
 "and -f, -t, and -p specify processes, threads, and pool concurrency \n";
 
-//#include <my_global.h>
-#include <mysql.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <netdb.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
-#include <pthread.h>
-#include <signal.h>
-#include <string.h>
-#include <fstream> 
-#include <time.h>
-
-#define HTML 1
-#define GIF 2
-#define PLAIN 3
-#define INDEX 4
-#define DEFAULT 5
-#define PROCESS 6
-#define THREAD 7
-#define POOL 8
-#define SCRIPT 9
-#define ICONS 10
-#define DEFAULTPORT 8888
-#define SERVER "localhost"
-#define DATABASE "imgs"
-
-int QueueLength = 5;
 
 // Processes time request
 void processTimeRequest( int socket );
@@ -57,6 +52,10 @@ char user[32];
 char pwd[32];
 pthread_mutex_t mutex;
 MYSQL * connection;
+
+extern get_(char * toGet, char * getFrom, char * toReturn);
+extern get_chars(char * toGet, char * getFrom, char * toReturn);
+extern get_multivalued(char* toGet, char* getFrom, char * toReturn);
 
 int
 main( int argc, char ** argv )
@@ -158,7 +157,7 @@ main( int argc, char ** argv )
 			}
 		}
 	} else {
-		mode = DEFAULT;
+		mode = THREAD;
 		port = DEFAULTPORT;
 	}
   
@@ -199,10 +198,11 @@ main( int argc, char ** argv )
 	if(mode == POOL){
 		pthread_t threads[5];
 		pthread_attr_t attr;
+        int i;
 		
 		pthread_attr_init(&attr);
 		pthread_attr_setscope(&attr, PTHREAD_SCOPE_SYSTEM);
-		for(int i = 0; i < 5; i++){
+		for(i = 0; i < 5; i++){
 			pthread_create(&threads[i], &attr, (void *(*)(void *))poolSlave, (void*)masterSocket);
 		}
 		pthread_join(threads[0], NULL);
@@ -301,231 +301,78 @@ void processRequest(int socket){
 	curr_string[docLength] = '\0';
 
 	docLength = 0;
-	float lat;
-	float lon;
-	char latString[7];
-	char lonString[7];
-	char * directory = "imgs/";
-	char name[23];
-	void * buffer = malloc(1024);
-	char query[1024];
+	//char query[1024];
+    printf("Current string: %s\n", curr_string);
+    char buffer[256];
+    int formNum = get_num("form", curr_string);
+    int importance_of_grades;
+    if(formNum == 1){
+        get_chars("fname", curr_string, buffer);
+        char * fname = strdup(buffer);
+        get_chars("lname", curr_string, buffer);
+        char * lname = strdup(buffer);
+        get_chars("gender", curr_string, buffer);
+        char * gender = strdup(buffer);
+        get_chars("year", curr_string, buffer);
+        char * year = strdup(buffer);
+        get_chars("smoking", curr_string, buffer);
+        char * smoking = strdup(buffer);
+        get_chars("pledge", curr_string, buffer);
+        char * pledge = strdup(buffer);
+        get_chars("drink", curr_string, buffer);
+        char * drink = strdup(buffer);
+        get_chars("religion", curr_string, buffer);
+        char * religion = strdup(buffer);
+        get_chars("shared_before", curr_string, buffer);
+        char * shared_before = strdup(buffer);
+        get_chars("early_bird", curr_string, buffer);
+        char * early_bird = strdup(buffer);
+        get_chars("snore", curr_string, buffer);
+        char * snore = strdup(buffer);
+        get_chars("clean", curr_string, buffer);
+        char * clean = strdup(buffer); 
+        importance_of_grades = get_num("importance_of_grades", curr_string);
 
-	if(strcmp("POST", curr_string) == 0){
-		//Request to put a picture to the server
-		
-		printf("Post request\n");
+        char s_id[10];
+        connection = mysql_init(NULL);
+        mysql_real_connect(connection, SERVER, user, pwd, DATABASE, 2546, "/homes/csreid/myqld/mysqld.sock", 0);
+        if(!connection){
+            fprintf(stderr, "Connection failed\n");
+        } else {
+            printf("Connected\n");
+        }
 
-		for(i = 0; i < max; i++){
-			curr_string[i] = '\0';
-		}
-		//the first two parts will be latitude and longitude:
+        char * query = (char *)malloc(2048 * sizeof(char));
+        /*Table student:
+         * lname
+         * fname
+         * gender
+         * year
+         * smoking
+         * pledge
+         * party
+         * religion
+         * shared_before
+         * early_bired
+         * snore
+         * importance_of_grades
+         * s_id*/
+        sprintf(query, "INSERT INTO student VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %i, %s)", lname, fname, gender, year, smoking, pledge, drink, religion, shared_before, early_bird, snore, importance_of_grades, s_id);
+        int err = mysql_query(connection, query);
+        if(!err){
+            fprintf(stderr, "ERROR: %i\n", err);
+        }
 
-		n = read(socket, &latString, 7);
-		
-		n = read(socket, &lonString, 7);
-		lat = atof(latString);
-		lon = atof(lonString);
+    } else {
+        printf("Second form!\n");
+    }
+   /* int sports_count = get_multi_count("sports", curr_string);
+    printf("Number of sports: %i\n", sports_count);
+    get_multi(0, "sports", curr_string, buffer);
+    char * first_sport = strdup(buffer);
+    printf("First sport: %s\n", first_sport);
 
-
-		int offset = 0;
-		char c;
-
-		//put image data in database
-
-		int err = sprintf(query, "INSERT INTO img VALUES(%f,%f,%i)", lat, lon, rand());	
-
-		connection = mysql_init(NULL);
-
-		mysql_real_connect(connection,SERVER,user,pwd,DATABASE,2546,"/homes/csreid/mysqld/mysqld.sock",0);
-	
-		if(!connection){
-			fprintf(stderr, "Connection failed\n");
-		} else {
-			printf("Connected\n");	
-		}
-
-   		MYSQL_RES *res_set; // Create a pointer to recieve the return value.
-	    MYSQL_ROW row;  // Assign variable for rows. 	
-
-   	    err = mysql_query(connection, query);
-
-	    mysql_close(connection);   /* Close and shutdown */
-
-
-
-		//Get the image.		
-
-		strcat(name, directory);
-		strcat(name, latString);
-		strcat(name, lonString);
-		strcat(name, ".jpg");
-
-		FILE * file = fopen(name, "a");
-		
-		n = read(socket, &newChar, 1);
-
-		fwrite(&newChar, 1, 1, file);
-
-		while(read(socket, &newChar, 1) != 0){
-			fwrite(&newChar, 1, 1, file);
-		}
-		printf("File recieved.\n");
-		
-		fclose(file);
-
-	} else if(!strcmp("UPDATE", curr_string)){
-		//First part will be user's lat and lon:
-		//(same code as in POST request)
-
-		printf("Update request\n");
-
-		n = read(socket, &latString, 7);
-		n = read(socket, &lonString, 7);
-		lat = atof(latString);
-		lon = atof(lonString);
-		
-		//a difference of .01 in lat or lon values corresponds to about 1km separation. So, these values will give all pictures within 1 km of the user.
-		double maxLat = lat + .01;
-		double minLat = lat - .01;
-
-		double maxLon = lon + .01;
-		double minLon = lon - .01;
-
-		/* Sample query to get values in range:
-		SELECT * FROM img WHERE lat <= 59.0212 AND lat >= 59.0012 AND lon <= 35.1425 AND lon >= 35.1225;
-		*/
-
-		//int err = sprintf(query, "SELECT timestamp FROM img WHERE lat <= %f AND lat >= %f AND lon <= %f AND lon >= %f", maxLat, minLat, maxLon, minLon);
-		int err = sprintf(query, "SELECT * FROM img WHERE lat <= %f AND lat >= %f AND lon <= %f AND lon >= %f", maxLat, minLat, maxLon, minLon);
-
-
-		//connect to database, send the query, and return the results
-		connection = mysql_init(NULL);
-
-		mysql_real_connect(connection,SERVER,user,pwd,DATABASE,2546,"/homes/csreid/mysqld/mysqld.sock",0);
-	
-		if(!connection){
-			fprintf(stderr, "Connection failed\n");
-		}
-
-   		MYSQL_RES *res_set; // Create a pointer to recieve the return value.
-	    MYSQL_ROW row;  // Assign variable for rows. 	
-
-   	    err = mysql_query(connection, query);
-
-		res_set = mysql_store_result(connection);
-
-		unsigned int numrows = mysql_num_rows(res_set);
-
-		int values[numrows];
-
-		for(i = 0; i < numrows; i++){
-			row = mysql_fetch_row(res_set);
-			if(!row[2]){
-				printf("NULL");
-				exit(0);
-			} else {
-				values[i] = atoi(row[2]);
-			}
-		}
-
-	    mysql_close(connection);   /* Close and shutdown */
-
-		//send the keys of the valid images
-		//data is formatted like:
-
-		/*
-			<NUMBER OF ELEMENTS>\r\n
-			<ELEMENT 1>
-			<ELEMENT 2>
-			etc...
-		*/
-		printf("%i valid rows\n", numrows);
-		write(socket, &numrows, sizeof(int));
-		write(socket, "\r\n", 2);
-
-		for(i = 0; i < numrows; i++){
-			write(socket, &values[i], sizeof(int));
-		}
-		
-		
-	} else if (!strcmp("REQUEST", curr_string)){
-		//send the phone the image requested
-
-		printf("Image request\n");
-		char keyString[9];
-		int key;
-		
-		n = read(socket, &keyString, 9);
-		key = atoi(keyString);
-
-		printf("Key: %i\n", key);
-
-		//connect to database
-		connection = mysql_init(NULL);
-
-		mysql_real_connect(connection,SERVER,user,pwd,DATABASE,2546,"/homes/csreid/mysqld/mysqld.sock",0);
-	
-		if(!connection){
-			fprintf(stderr, "Connection failed\n");
-		}
-
-		//construct query
-		int err = sprintf(query, "SELECT * FROM img WHERE timestamp = %i", key);
-
-		//send query
-   		MYSQL_RES *res_set; // Create a pointer to recieve the return value.
-	    MYSQL_ROW row;  // Assign variable for rows. 	
-
-   	    err = mysql_query(connection, query);
-
-		res_set = mysql_store_result(connection);
-
-		unsigned int numrows = mysql_num_rows(res_set);
-		
-		row = mysql_fetch_row(res_set);
-
-
-		//construct path to requested image, store path in "name"
-		strcat(name, "imgs/");
-		strcat(name, row[0]);
-		strcat(name, row[1]);
-		strcat(name, ".jpg");
-
-		//respond with requested file
-		write(socket, "INCOMING", 8);
-		
-		FILE * file = fopen(name, "a");
-		int count;
-		int offset = 0;
-		printf("Sending requested file...\n");
-		while(count = pread(fileno(file), buffer, 1024, offset)){
-			if(write(socket, buffer, 1024) != count){
-				//perror("write");
-			}
-			offset += 1024;
-		}
-		printf("Sent");
-		
-
-	}else {
-		printf("WTF\n\n");
-	}
+    printf("Drink: %s\n", drink);*/
+    
 }
 
-int endsIn(char* string, char* endsIn){
-	int strSize = strlen(string);
-	int endSize = strlen(endsIn);
-	int counter = strSize - endSize;
-	int j = 0;
-	int match = 1;
-	
-	while(counter <= strSize){
-		if(string[counter] != endsIn[j]){
-			match = 0;
-		}
-		counter++;
-		j++;
-	}
-	return match;
-}
