@@ -306,8 +306,17 @@ public class Second_Profile extends ActionBarActivity {
                     System.out.println(myStudent.bed);
                     System.out.println(myStudent.religion);
                     System.out.println(myStudent.grades);
+                    String S_ID;
+                    Bundle extras = getIntent().getExtras();
+                    if(extras != null){
+                        S_ID = extras.getString("S_ID");
+                    } else {
+                        S_ID = null;
+                    }
 
                     String myFinalString = "{\n" +
+                            "\"form\": 2\n"+
+                            "\"s_id\": " + S_ID + ";\n" +
                             "\"smoking\": " + myStudent.smoke + ";\n" +
                             "\"smoking_import\":" + myStudent.smoke_imp + ";\n" +
                             "\"pledge\": " + myStudent.greek + ";\n" +

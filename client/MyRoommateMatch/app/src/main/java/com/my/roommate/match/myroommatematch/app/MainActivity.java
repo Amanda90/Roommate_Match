@@ -259,14 +259,6 @@ public class MainActivity extends ActionBarActivity {
                     greekflg = false;
                 }
 
-                //Generate ID
-                char firsti = myStudent.first.charAt(0);
-                char lasti = myStudent.last.charAt(0);
-                myStudent.id = myStudent.id + firsti +  lasti + bday;
-
-                System.out.println("HERE!!!!!!!!" + myStudent.id);
-
-
                 myStudent.email = email.getText().toString();
                 if(myStudent.email == null){
                     okay = false;
@@ -279,6 +271,20 @@ public class MainActivity extends ActionBarActivity {
                 if(myStudent.last == null){
                     okay = false;
                 }
+
+                //Generate ID
+                StringBuilder tempid = new StringBuilder();
+                char firsti = myStudent.first.charAt(0);
+                char lasti = myStudent.last.charAt(0);
+
+
+                tempid.append(firsti);
+                tempid.append(lasti);
+
+                String realbday = bday.getText().toString().replace("/", "");
+
+                myStudent.id = tempid + realbday;
+
 
                 if(genderGrp.getCheckedRadioButtonId() != -1) {
                     myStudent.gender = genderBt.getText().toString();
@@ -341,6 +347,8 @@ public class MainActivity extends ActionBarActivity {
                     System.out.println(myStudent.grades);
 
                     myFinalString = "{\n" +
+                    "\"form\": 1\n"+
+                    "\"s_id\": " + myStudent.id + ";\n" +
                     "\"email\": " + myStudent.email + ";\n" +
                     "\"fname\": " + myStudent.first + ";\n" +
                     "\"lname\": " + myStudent.last + ";\n" +
@@ -410,7 +418,9 @@ public class MainActivity extends ActionBarActivity {
                     //Switch to second Profile
 
                     Intent intent = new Intent(context, Second_Profile.class);
+                    intent.putExtra("S_ID", myStudent.id);
                     startActivity(intent);
+
                 }
             }
         });
